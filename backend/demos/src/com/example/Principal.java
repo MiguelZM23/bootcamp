@@ -17,8 +17,8 @@ public class Principal {
 	 */
 	public static int main(String[] args) {
 		String s = "Hola";
-		s += "- Mundo";
-		System.out.println("Hola Mundo");
+		s += "- World";
+		System.out.println(s);
 		return 0;
 	}
 
