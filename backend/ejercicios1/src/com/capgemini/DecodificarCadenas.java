@@ -8,13 +8,38 @@ public class DecodificarCadenas {
 		String cadena = "3+4+3,4-7*1=";
 		int[] numeros = new int[12];
 		float decimal = 0;System.out.println(cadena);
-		char caracteres[] = new char[cadena.length()];
-		
+		char operandos[] = new char[7];
+		char operadores[] = new char[5];
+		int j = 0;
+		int h = 0;
+		int guardar;
 	
 
 		for(int i = 0;i<cadena.length();i++){
-			caracteres[i] = cadena.charAt(i);	
+			if (Character.isDigit(cadena.charAt(i)) || cadena.charAt(i)==',') {	
+				operandos[j] = cadena.charAt(i);
+				j=j+1;
+			}else {
+				operadores[h] = cadena.charAt(i);
+				h=h+1;
+			}
+				
 		}
+		
+		for (int i=0; i<operandos.length; i++) {
+			System.out.println(operandos[i]);
+		}
+		for (int i=0; i<operadores.length; i++) {
+			System.out.println(operadores[i]);
+		}
+		
+		//Calculadora()
+		
+		//Creo un bucle que va a pasar los datos a la clase calculadora
+		
+		
+		
+		/*
 		
 		System.out.println(caracteres[0]+" "+caracteres[1]);System.out.println(caracteres[2]+" "+caracteres[3]); 
 		// Para evitar que
@@ -33,8 +58,8 @@ public class DecodificarCadenas {
 			// valor y no el código numérico de referencia.
 		numeros[j] = caracteres[j] - '0';
 	}
-
-
+*/
+		
 	//float resultado = (numeros[0] + numeros[2] + decimal) - (numeros[8]) * numeros[10];
 
 	// Mostramos el resultado redondeando a dos decimales.
