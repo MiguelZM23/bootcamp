@@ -10,6 +10,7 @@ public class DecodificarCadenas {
 		float decimal = 0;System.out.println(cadena);
 		char operandos[] = new char[7];
 		char operadores[] = new char[5];
+		float operandosFloat[] = new float[7];
 		int j = 0;
 		int h = 0;
 		int guardar;
@@ -26,12 +27,34 @@ public class DecodificarCadenas {
 				
 		}
 		
+		//Cambio las , por .
+		for(int i = 0; i<operandos.length; i++) {
+			if(operandos[i] == ',') operandos[i]='.';
+		}
+		
+		//Transformo a float
+		for(int i = 0; i<operandos.length; i++) {
+			if(operandos[i] == '.') {
+				operandosFloat[i-1] = Float.valueOf(String.valueOf(operandos[i-1]+(float)operandos[i]+(float)operandos[i+1]));
+				i=i+1;
+			}else operandosFloat[i] = (float)operandos[i]-'0';	
+		}
+		
+		
+		
 		for (int i=0; i<operandos.length; i++) {
-			System.out.println(operandos[i]);
+			System.out.println(operandosFloat[i]);
 		}
-		for (int i=0; i<operadores.length; i++) {
-			System.out.println(operadores[i]);
-		}
+		
+		Calculadora calculadora = new Calculadora();		
+		float resultado = calculadora.calcula(operandosFloat[0], operadores[0]);
+		float resultado2 = calculadora.calcula(operandosFloat[1], operadores[1]);
+		float resultado3 = calculadora.calcula(operandosFloat[2], operadores[2]);
+		
+		
+		System.out.println(resultado);
+		System.out.println(resultado2);
+		System.out.println(resultado3);
 		
 		//Calculadora()
 		

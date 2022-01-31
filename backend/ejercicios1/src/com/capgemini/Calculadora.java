@@ -2,26 +2,25 @@ package com.capgemini;
 
 public class Calculadora {
 	int operando = 0;
-	String operador;
+	char operador;
 	float resultado = 0;
+	float operando1 = -1;
+	float operando2 =-1;
+	float acumulado = 0;
 	
-	public float calcula(float operando, String operador) {
-		float operando1;
-		float operando2;
+	public float calcula(float operando, char operador) {
 		
-		if () {
-			
+		char operadorGuardado = operador;
+
+		if(operando1<0){
+			operando1 = operando;
+		}else if (operando2<0) {
+			operando2 = operando;
+			if(operador == '+')
+			resultado = acumulado + operando1 + operando2; 
 		}
 		
-		numeroGuardado = operando1;
-		
-		if(operando2) {
-			
-		}
-		if()
-		resultado = 
-		
-		
+		acumulado += resultado;
 		return resultado;
 		
 	}
