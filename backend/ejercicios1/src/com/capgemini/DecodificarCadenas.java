@@ -35,7 +35,7 @@ public class DecodificarCadenas {
 		//Transformo a float
 		for(int i = 0; i<operandos.length; i++) {
 			if(operandos[i] == '.') {
-				operandosFloat[i-1] = Float.valueOf(String.valueOf(operandos[i-1]+(float)operandos[i]+(float)operandos[i+1]));
+				operandosFloat[i-1] = Float.valueOf(String.valueOf(operandos[i-1]+operandos[i]+operandos[i+1]));
 				i=i+1;
 			}else operandosFloat[i] = (float)operandos[i]-'0';	
 		}

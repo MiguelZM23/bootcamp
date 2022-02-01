@@ -2,16 +2,18 @@
  * 
  */
 package com.capgemini;
-
+import com.naipes.*;
 import java.util.Random;
 import java.util.Scanner;
 
 import javax.swing.JOptionPane;
 
+
+
 /**
  * @author mizapata 
- * Adivina el número 
- * version: 0.2
+ * Ejercicios y juegos
+ * version: 0.3
  *
  */
 public class main {
@@ -28,6 +30,7 @@ public class main {
 		System.out.println("Elige opción introduciendo el nº correspondiente: ");
 		System.out.println("1. Juego del Número ");
 		System.out.println("2. Decodificar cadenas");
+		System.out.println("3. Juego de cartas");
 		respuesta = teclado.nextLine();
 
 		if (respuesta.equals("1")) {
@@ -48,7 +51,11 @@ public class main {
 			DecodificarCadenas decodificar = new DecodificarCadenas();
 			decodificar.inicializar();
 
-		} else {
+		}else if(respuesta.equals("3")) {
+			JuegoNaipes juego = new JuegoNaipes();
+			juego.inicializar();
+			
+		}else {
 			System.out.println("Vuelve a ejecutar e introduce un valor válido");
 		}
 
