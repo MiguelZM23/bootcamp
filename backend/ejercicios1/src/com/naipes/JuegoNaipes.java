@@ -4,10 +4,14 @@ import java.util.Scanner;
 
 import com.naipes.Baraja.Naipe;
 
+/**
+ * @author mizapata
+ *
+ */
 public class JuegoNaipes {
-	
+
 	Scanner teclado = new Scanner(System.in);
-	
+
 	public void inicializar() {
 		Baraja mazo;
 		System.out.println("***Juegos de cartas***");
@@ -17,26 +21,24 @@ public class JuegoNaipes {
 		byte numCartas = teclado.nextByte();
 		if (respuesta == 1) {
 			mazo = new Baraja(TipoBaraja.ESPANOLA, numCartas);
-		} else { 
+		} else {
 			mazo = new Baraja(TipoBaraja.FRANCESA, numCartas);
 		}
-		
+
 		mazo.creaMazo(numCartas);
-		Naipe mano1[] = mazo.barajar(5);
-		Naipe mano2[] = mazo.barajar(5);
-		
-		System.out.println("La mano uno es la siguiente:");
-		for (int i=0; i<mano1.length; i++) {
-			System.out.println(mano1[i].numero);
-			System.out.println(mano1[i].palo);
-		}
-		System.out.println("La mano dos es la siguiente:");
-		for (int i=0; i<mano2.length; i++) {
-			System.out.println(mano2[i].numero);
-			System.out.println(mano2[i].palo);
-		}
-		
+		mazo.barajar();
+
+		// Naipe mano1[] = mazo.barajar(5);
+
+		// Naipe mano2[] = mazo.barajar(5);
+		/*
+		 * System.out.println("La mano uno es la siguiente:"); for (int i=0;
+		 * i<mano1.length; i++) { System.out.println(mano1[i].numero);
+		 * System.out.println(mano1[i].palo); }
+		 * System.out.println("La mano dos es la siguiente:"); for (int i=0;
+		 * i<mano2.length; i++) { System.out.println(mano2[i].numero);
+		 * System.out.println(mano2[i].palo); }
+		 */
 	}
-	
-	
+
 }
