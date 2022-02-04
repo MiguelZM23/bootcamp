@@ -47,6 +47,7 @@ public class DecodificarCadenas {
 		}
 		
 		Calculadora calculadora = new Calculadora();		
+		/*
 		float resultado = calculadora.calcula(operandosFloat[0], operadores[0]);
 		float resultado2 = calculadora.calcula(operandosFloat[1], operadores[1]);
 		float resultado3 = calculadora.calcula(operandosFloat[2], operadores[2]);
@@ -55,7 +56,7 @@ public class DecodificarCadenas {
 		System.out.println(resultado);
 		System.out.println(resultado2);
 		System.out.println(resultado3);
-		
+		*/
 		//Calculadora()
 		
 		//Creo un bucle que va a pasar los datos a la clase calculadora
