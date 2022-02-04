@@ -7,6 +7,7 @@ import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
 
 import com.capgemini.CalculadoraCientifica;
 
@@ -66,7 +67,30 @@ class JuegoAdivinaNumeroTest {
 			
 			);
 		}
+		@Test
+		void test_terminado() throws JuegoException{
+			for (int i=1; i<=10; i++) {
+				juego.jugada(10);
+			}
+			assertAll("Jugada", 
+			() -> assertEquals(true, juego.getFinalizado()),
+			() -> assertEquals("Upsss! Se acabaron los intentos, el número era el 50", juego.getResultado())
+			);
+		}
+		@Test
+		void test_exception_jugadas() throws JuegoException{
+			for (int i=1; i<=15; i+=1) {
+				juego.jugada(10);
+			}
+			assertThrows(JuegoException.class, ()-> juego.getFinalizado());
+		
 	}
+		@Test
+		void test_exception_no_es_un_numero() throws JuegoException{
+			juego.jugada("a");
+			assertThrows (JuegoException.class, ()-> juego.getFinalizado());
+		}
 
 
+	}
 }
