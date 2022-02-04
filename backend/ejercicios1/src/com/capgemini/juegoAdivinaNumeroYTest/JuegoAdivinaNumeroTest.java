@@ -33,7 +33,7 @@ class JuegoAdivinaNumeroTest {
 		assertAll("Inicializar", 
 				() -> assertEquals("Pendiente de empezar", juego.getResultado()),
 				() -> assertEquals(0, juego.getJugada()),
-				() -> assertEquals(0 < juego.numeroBuscado && juego.numeroBuscado <=100, juego.getResultado(), "rango entre 1 y 100")
+				() -> assertTrue(0 < juego.numeroBuscado && juego.numeroBuscado <=100, "rango entre 1 y 100")
 				);
 	}
 	
