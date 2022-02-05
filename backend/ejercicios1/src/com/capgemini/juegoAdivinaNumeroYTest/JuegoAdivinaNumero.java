@@ -29,25 +29,26 @@ public class JuegoAdivinaNumero implements Juego<String> {
 	}
 	
 	@Override
-	public void jugada(String movimiento) throws JuegoException {
+	public void jugada(String numeroIntroducidoString) throws JuegoException {
+		
 		try {
-			jugada(Integer.parseInt(movimiento));
+			jugada(Integer.parseInt(numeroIntroducidoString));
 		} catch (NumberFormatException e) {
 			throw new JuegoException("No es un número.", e);
 		}
 	}
 
-	public void jugada(int numeroIntroducido) throws JuegoException {
+	public void jugada(int numeroIntroducidoInt) throws JuegoException {
 		if(getFinalizado()) {
 			throw new JuegoException("El juego ha finalizado");
 		}
         intentos += 1;
-        if (numeroBuscado == numeroIntroducido) {
+        if (numeroBuscado == numeroIntroducidoInt) {
             encontrado = true;
             resultado = "Bieeen!!! Acertaste.";
         } else if (intentos >= 10) {
         	resultado = "Upsss! Se acabaron los intentos, el número era el " + numeroBuscado;
-        } else if (numeroBuscado > numeroIntroducido) {
+        } else if (numeroBuscado > numeroIntroducidoInt) {
         	resultado = "Mi número es mayor.";
         } else {
         	resultado = "Mi número es menor.";
@@ -61,6 +62,7 @@ public class JuegoAdivinaNumero implements Juego<String> {
 	public String getResultado() {
 		return resultado;
 	}
+	
 
 	@Override
 	public boolean getFinalizado() {

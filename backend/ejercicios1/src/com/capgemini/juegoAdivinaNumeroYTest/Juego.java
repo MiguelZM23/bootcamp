@@ -17,7 +17,7 @@ public interface Juego<T> {
 	 */
 	boolean getFinalizado();
 	/**
-	 * Devuele el resultado de la última jugada
+	 * Devuelve el resultado de la última jugada
 	 * @return Resultado de la última jugada
 	 */
 	T getResultado();

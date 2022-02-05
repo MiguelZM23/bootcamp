@@ -90,6 +90,15 @@ class JuegoAdivinaNumeroTest {
 			juego.jugada("a");
 			assertThrows (JuegoException.class, ()-> juego.getFinalizado());
 		}
+		
+		@Test
+		void test_exception_negativo() throws JuegoException{
+			juego.jugada(-1);
+			assertThrows (JuegoException.class, ()-> juego.getFinalizado());
+		}
+		
+		
+		
 
 
 	}
