@@ -126,22 +126,4 @@ public class Baraja {
 	
 		}
 
-	/*
-	 * public Naipe[] barajar(int cartasARepartir) { int num; Naipe mano[] = new
-	 * Naipe[cartasARepartir]; for (int i = 0; i < cartasARepartir; i++) { var rnd =
-	 * new Random(); num = (int) rnd.nextInt(mazo.length); mano[i] = mazo[num]; }
-	 * 
-	 * return mano;
-	 * 
-	 * }
-	 */
-
-	/*
-	 * public String dimePalo(byte j) { if (j == 1) return "BASTOS"; if (j == 2)
-	 * return "ESPADAS";
-	 * 
-	 * }
-	 * 
-	 */
-
 }
