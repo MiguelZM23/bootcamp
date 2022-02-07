@@ -11,6 +11,9 @@ import com.naipes.Baraja.Naipe;
 public class JuegoNaipes {
 
 	Scanner teclado = new Scanner(System.in);
+	Naipe carta1;
+	Naipe carta2;
+	Naipe cartaGanadora;
 
 	public void inicializar() {
 		Baraja mazo;
@@ -27,7 +30,24 @@ public class JuegoNaipes {
 
 		mazo.creaMazo(numCartas);
 		mazo.barajar();
-
+		carta1 = mazo.dameCarta();
+		carta2 = mazo.dameCarta();
+		
+		System.out.println(carta1.numero);
+		System.out.println(carta1.palo);
+		System.out.println(carta2.numero);
+		System.out.println(carta2.palo);
+		
+		cartaGanadora = mazo.comparar(carta1, carta2);
+		
+		if (cartaGanadora.numero == 0) System.out.println("Empate");
+		else {
+			System.out.println("Carta Ganadora:");
+			System.out.println(cartaGanadora.numero);
+			System.out.println(cartaGanadora.palo);
+			
+		};
+		
 		// Naipe mano1[] = mazo.barajar(5);
 
 		// Naipe mano2[] = mazo.barajar(5);

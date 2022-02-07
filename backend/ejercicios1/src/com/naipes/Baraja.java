@@ -3,6 +3,7 @@ package com.naipes;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Stream;
 
 /**
  * @author mizapata
@@ -29,6 +30,24 @@ public class Baraja {
 			this.palo = palo;
 			this.numero = numero;
 		}
+
+		public Enum getPalo() {
+			return palo;
+		}
+
+		public void setPalo(Enum palo) {
+			this.palo = palo;
+		}
+
+		public int getNumero() {
+			return numero;
+		}
+
+		public void setNumero(int numero) {
+			this.numero = numero;
+		}
+		
+		
 
 	}
 
@@ -80,13 +99,32 @@ public class Baraja {
 			// Quitamos la carta del mazo de origen
 			mazo.remove(num);
 		}
+		
+		mazo = mazodes;
 		System.out.println("El mazo barajado es el siguiente:");
-		mazodes.forEach(palo -> {
-			System.out.println(palo.palo);
-			System.out.println(palo.numero);
+		mazodes.forEach(carta -> {
+			System.out.println(carta.palo);
+			System.out.println(carta.numero);
 		});
 
 	}
+	
+	public Naipe dameCarta() {
+		Naipe cartaJugador = mazo.get(mazo.size()-1);
+		mazo.remove(mazo.size()-1);	
+		
+		return cartaJugador;
+	}
+	
+	public Naipe comparar(Naipe carta1, Naipe carta2) {
+		Naipe cartaGanadora;
+		
+		cartaGanadora = (carta1.numero>carta2.numero) ? carta1: carta2; 
+		if (carta1.numero == carta2.numero) cartaGanadora.numero = 0; cartaGanadora.palo = carta1.palo;
+	
+		return cartaGanadora;
+	
+		}
 
 	/*
 	 * public Naipe[] barajar(int cartasARepartir) { int num; Naipe mano[] = new
