@@ -2,12 +2,15 @@ package com.capgemini;
 
 public class Posicion {
 	private int fila;
-	private int columna;
+	private int col;
 	
 	public Posicion(int col, int fila) {
-		
+		this.fila = fila;
+		this.col = col;
 	}
 	public Posicion(char col, char fila) {
+		this.col = (col-'A')+1;
+		this.fila = Integer.parseInt(String.valueOf(fila));
 		
 	}
 	
@@ -20,11 +23,12 @@ public class Posicion {
 	public void setFila(int fila) {
 		this.fila = fila;
 	}
-	public int getColumna() {
-		return columna;
+	public int getCol() {
+		return col;
+			
 	}
-	public void setColumna(int columna) {
-		this.columna = columna;
+	public void setCol(int columna) {
+		this.col = columna;
 	}
 	
 }
