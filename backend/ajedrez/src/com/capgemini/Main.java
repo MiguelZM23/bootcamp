@@ -6,7 +6,8 @@ public class Main {
 		Main app = new Main();
 		app.run();
 		
-		System.out.println("Hola Mundo");
+		System.out.println("Ajedrez");
+		
 		
 	}
 

@@ -11,20 +11,52 @@ import java.util.stream.Stream;
  */
 public class Baraja {
 	
-	int numeroCartas;//Numero de cartas de la baraja
-	TipoBaraja tipoBaraja;//Francesa o Española
-	Palo palo;
-	List<Naipe> mazo;
+	private int numeroCartas;//Numero de cartas de la baraja
+	private TipoBaraja tipoBaraja;//Francesa o Española
+	private Palo palo;
+	private List<Naipe> mazo;
 
 	public Baraja(TipoBaraja tipoBaraja, int numeroCartas) {
 		this.tipoBaraja = tipoBaraja;
 		this.numeroCartas = numeroCartas;
 	};
+	
+	public int getNumeroCartas() {
+		return numeroCartas;
+	}
+
+	public void setNumeroCartas(int numeroCartas) {
+		this.numeroCartas = numeroCartas;
+	}
+
+	public TipoBaraja getTipoBaraja() {
+		return tipoBaraja;
+	}
+
+	public void setTipoBaraja(TipoBaraja tipoBaraja) {
+		this.tipoBaraja = tipoBaraja;
+	}
+
+	public Palo getPalo() {
+		return palo;
+	}
+
+	public void setPalo(Palo palo) {
+		this.palo = palo;
+	}
+
+	public List<Naipe> getMazo() {
+		return mazo;
+	}
+
+	public void setMazo(List<Naipe> mazo) {
+		this.mazo = mazo;
+	}
 
 	// Anidamos la clase Naipe dentro de Baraja
-	public class Naipe {
-		Enum palo;
-		int numero;
+	public static class Naipe {
+		private Enum palo;
+		private int numero;
 
 		Naipe(Enum palo, int numero) {
 			this.palo = palo;
@@ -35,20 +67,9 @@ public class Baraja {
 			return palo;
 		}
 
-		public void setPalo(Enum palo) {
-			this.palo = palo;
-		}
-
 		public int getNumero() {
 			return numero;
 		}
-
-		public void setNumero(int numero) {
-			this.numero = numero;
-		}
-		
-		
-
 	}
 
 	/**
@@ -121,7 +142,7 @@ public class Baraja {
 		
 		cartaGanadora = (carta1.numero>carta2.numero) ? carta1: carta2; 
 		if (carta1.numero == carta2.numero) cartaGanadora.numero = 0; cartaGanadora.palo = carta1.palo;
-	
+		
 		return cartaGanadora;
 	
 		}

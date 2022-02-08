@@ -11,12 +11,17 @@ import org.junit.jupiter.api.Test;
 
 import com.naipes.Baraja.Naipe;
 
+import junit.framework.Assert;
+
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 class BarajaTest {
-
+	Baraja mazo;
+	Baraja.Naipe carta1;
+	Baraja.Naipe carta2;
 	@BeforeEach
 	void setUp() throws Exception {
-		Baraja mazo = new Baraja(TipoBaraja.ESPANOLA, 40);
+		mazo = new Baraja(TipoBaraja.ESPANOLA, 40);
+		
 		}
 
 	
@@ -24,7 +29,7 @@ class BarajaTest {
 	void testBaraja() {
 		Baraja mazo = new Baraja(TipoBaraja.ESPANOLA, 40);
 		ArrayList<Naipe> mazoTest = new ArrayList<Naipe>(40); 
-		assertEquals(mazoTest.size(), mazo.numeroCartas);
+		assertEquals(mazoTest.size(), mazo.getNumeroCartas());
 	}
 
 	@Test
@@ -44,7 +49,18 @@ class BarajaTest {
 
 	@Test
 	void testComparar() {
-		fail("Not yet implemented");
+		Naipe carta1 = new Baraja.Naipe(Palo.BASTOS, 5);
+		Naipe carta2 = new Baraja.Naipe(Palo.BASTOS, 8);
+		assertTrue(carta2.equals(mazo.comparar(carta1, carta2)));
+		assertTrue(carta2.getPalo() == mazo.comparar(carta1, carta2).getPalo());
+		assertTrue(carta2.getNumero() == mazo.comparar(carta1, carta2).getNumero());
+	}
+	
+	@Test
+	void testReferencias() {
+		Naipe carta1 = new Baraja.Naipe(Palo.BASTOS, 5);
+		Naipe carta2 = new Baraja.Naipe(Palo.BASTOS, 8);
+		assertTrue(carta2 == mazo.comparar(carta1, carta2));
 	}
 
 }

@@ -33,18 +33,18 @@ public class JuegoNaipes {
 		carta1 = mazo.dameCarta();
 		carta2 = mazo.dameCarta();
 		
-		System.out.println(carta1.numero);
-		System.out.println(carta1.palo);
-		System.out.println(carta2.numero);
-		System.out.println(carta2.palo);
+		System.out.println(carta1.getNumero());
+		System.out.println(carta1.getPalo());
+		System.out.println(carta2.getNumero());
+		System.out.println(carta2.getPalo());
 		
 		cartaGanadora = mazo.comparar(carta1, carta2);
 		
-		if (cartaGanadora.numero == 0) System.out.println("Empate");
+		if (cartaGanadora.getNumero() == 0) System.out.println("Empate");
 		else {
 			System.out.println("Carta Ganadora:");
-			System.out.println(cartaGanadora.numero);
-			System.out.println(cartaGanadora.palo);
+			System.out.println(cartaGanadora.getNumero());
+			System.out.println(cartaGanadora.getPalo());
 			
 		};
 		
