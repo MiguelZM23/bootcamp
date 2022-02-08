@@ -4,11 +4,20 @@ public abstract class Pieza {
 	
 	Color color;
 	
-	boolean esValido(Movimiento movimiento, Tablero tablero) {
+	boolean esValido(Movimiento mov, Tablero tablero) {
 		return false;
 	}
 	
-	public void mover(Movimiento movimiento, Tablero tablero) {
+	public void mover(Movimiento mov, Tablero tablero) {
 		
 	}
+
+	public Color getColor() {
+		return color;
+	}
+
+	public void setColor(Color color) {
+		this.color = color;
+	}
+	
 }

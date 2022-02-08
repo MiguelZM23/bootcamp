@@ -26,4 +26,21 @@ public class Juego {
 		
 	}
 
+	public Tablero getTablero() {
+		return tablero;
+	}
+
+	public void setTablero(Tablero tablero) {
+		this.tablero = tablero;
+	}
+
+	public Color getTurno() {
+		return turno;
+	}
+
+	public void setTurno(Color turno) {
+		this.turno = turno;
+	}
+	
+
 }

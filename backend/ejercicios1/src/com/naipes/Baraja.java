@@ -76,13 +76,13 @@ public class Baraja {
 	 * Crea un mazo de cartas con el número de cartas que recibe
 	 * @param numCartas
 	 */
-	public void creaMazo(int numCartas) {
+	public void creaMazo() {
 		
 		mazo = new ArrayList<Naipe>();
 
 		System.out.println(tipoBaraja.toString());
 		for (int j = 0; j < Palo.values().length; j++) {
-			for (int i = 1; i <= (numCartas / 4); i++) {
+			for (int i = 1; i <= (mazo.size() / 4); i++) {
 				//Si la baraja es francesa sumamos 4 a j
 				if (tipoBaraja == TipoBaraja.FRANCESA && j == 0)
 					j += 4;
