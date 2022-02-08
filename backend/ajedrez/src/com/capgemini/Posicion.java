@@ -15,7 +15,11 @@ public class Posicion {
 	}
 	
 	public boolean equals(Posicion pos) {
-		return true;
+		boolean equals;
+		if(this.fila == pos.fila && this.col == pos.col) equals = true;
+		else equals = false;
+		
+		return equals;
 	}
 	public int getFila() {
 		return fila;
