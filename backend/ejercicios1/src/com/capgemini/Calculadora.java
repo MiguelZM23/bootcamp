@@ -1,9 +1,23 @@
 package com.capgemini;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
+package com.example;
+
+import java.math.BigDecimal;
+import java.math.MathContext;
+import java.math.RoundingMode;
+import java.util.List;
 
 /**
- * Clase simple para realizar cálculos acumulados.
+ * Clase simple para realizar cï¿½lculos acumulados.
  *
  * @author Javier
  */
@@ -13,7 +27,7 @@ public class Calculadora {
      */
     public static final String OPERACIONES_SOPORTADAS = "+-*/=%";
     
-    private double acumulado;
+    private BigDecimal acumulado;
     private char operadorPendiente;
 
     /**
@@ -27,7 +41,7 @@ public class Calculadora {
      * Restaura el valor inicial para calcular la siguiente secuencia
      */
     public void inicializa() {
-        acumulado = 0;
+        acumulado = new BigDecimal(0);
         operadorPendiente = '+';
     }
 
@@ -36,62 +50,62 @@ public class Calculadora {
      * @return Valor acumulado
      */
     public double getAcumulado() {
-        return acumulado;
+        return acumulado.setScale(16, RoundingMode.HALF_EVEN).doubleValue();
     }
 
     /**
      * Comprueba que sea una de las operaciones soportadas por la calculadora.
-     * @param operacion Símbolo de la operación
+     * @param operacion Sï¿½mbolo de la operaciï¿½n
      * @return true si la soporta, false en el resto de los casos.
      */
     public boolean isOperacion(char operacion) {
         return OPERACIONES_SOPORTADAS.indexOf(operacion) != -1;
     }
     /**
-     * Realiza la operación pendiente una vez obtenido el segundo operador y 
-     * guarda la nueva operación pendiente
+     * Realiza la operaciï¿½n pendiente una vez obtenido el segundo operador y 
+     * guarda la nueva operaciï¿½n pendiente
      * @param operando2 segundo operador
-     * @param nuevoOperador la nueva operación pendiente
+     * @param nuevoOperador la nueva operaciï¿½n pendiente
      * @return el total acumulado hasta el momento
-     * @throws Exception Cuando el símbolo de operación no esta soportado
+     * @throws Exception Cuando el sï¿½mbolo de operaciï¿½n no esta soportado
      */
     public double calcula(double operando2, char nuevoOperador) throws CalculadoraException{
         if (!isOperacion(nuevoOperador)) {
-            throw new CalculadoraException("Operación no soportada.");
+            throw new CalculadoraException("Operaciï¿½n no soportada.");
         }
+        var operando = new BigDecimal(operando2);
         switch (operadorPendiente) {
             case '+':
-                acumulado += operando2;
+            	acumulado = acumulado.add(new BigDecimal(operando2));
                 break;
             case '-':
-                acumulado -= operando2;
+            	acumulado = acumulado.subtract(new BigDecimal(operando2));
                 break;
             case '*':
-                acumulado *= operando2;
+            	acumulado = acumulado.multiply(new BigDecimal(operando2));
                 break;
             case '/':
-                acumulado /= operando2;
+            	acumulado = acumulado.divide(new BigDecimal(operando2), MathContext.DECIMAL64);
                 break;
             case '%':
-                acumulado %= operando2;
+            	acumulado = acumulado.remainder(new BigDecimal(operando2));
                 break;
             case '=':
-                acumulado += operando2;
                 break;
             default:
-                throw new CalculadoraException("Operación no soportada.");
+                throw new CalculadoraException("Operaciï¿½n no soportada.");
         }
         this.operadorPendiente = nuevoOperador;
-        return acumulado;
+        return getAcumulado();
     }
 
     /**
      * Sobrecarga
      * @see Calculadora#calcula(double, char) 
      * @param operando2 segundo operador
-     * @param nuevaOperacion la nueva operación pendiente
+     * @param nuevaOperacion la nueva operaciï¿½n pendiente
      * @return el total acumulado hasta el momento
-     * @throws Exception Cuando el símbolo de operación no esta soportado
+     * @throws Exception Cuando el sï¿½mbolo de operaciï¿½n no esta soportado
      */
     public double calcula(String operando2, char nuevoOperador) throws CalculadoraException {
         if (operando2.endsWith(",") || operando2.endsWith(".")) {
@@ -103,11 +117,43 @@ public class Calculadora {
                     nuevoOperador);
         } catch (NumberFormatException ex) {
             throw new CalculadoraException(
-                    "El operando no tienen un formato númerico valido.", 
+                    "El operando no tienen un formato nÃºmerico valido.", 
                     ex);
         }
     }
     
+    public static double calcula(String expresion) throws CalculadoraException, Exception {
+		if (expresion == null || "".equals(expresion) || !Character.isDigit(expresion.charAt(0)))
+			throw new java.lang.IllegalArgumentException("No es una expresiÃ³n valida");
+		String operando = "";
+		Calculadora calculadora = new Calculadora();
+		for (int i = 0; i < expresion.length(); i++) {
+			char ch = expresion.charAt(i);
+			if (Character.isDigit(ch)) {
+				operando += ch;
+			} else if (ch == ',') {
+				if (operando.indexOf(ch) == -1) {
+					operando += ch;
+				} else {
+					// throw new Exception("Ya existe separador decimal.");
+				}
+			} else if ("+-*/%=".indexOf(ch) >= 0) {
+				if (operando.endsWith(",")) {
+					operando += "0";
+				}
+				calculadora.calcula(operando, ch);
+				System.out.println(operando + "\t" + ch + "\t" + calculadora.getAcumulado());
+				if (ch == '=') {
+					break;
+				}
+				operando = "";
+			} else if (ch != ' ') {
+//				throw new Exception("CarÃ¡cter no valido.");
+			}
+		}
+		System.out.println(calculadora.getAcumulado());
+		return calculadora.getAcumulado();
+	}
 	public static class Operacion {
 		private double operando;
 		private char operador;
@@ -133,7 +179,51 @@ public class Calculadora {
 		for (Operacion operacion : operaciones) {
 			calcula(operacion.getOperando(), operacion.getOperador());			
 		}
-		return acumulado;
+		return getAcumulado();
 	}
 	
+
+    
+    public void leerFichero() throws IOException {
+    	
+    	File datosLeidos = new File ("C:\\Entrada.txt");
+    	FileReader fr = new FileReader (datosLeidos);
+    	
+    	BufferedReader br = new BufferedReader(fr);
+    	
+    	String linea = br.readLine();
+    	
+    	System.out.println(linea);
+    	
+    	calcula(linea);
+    	
+    	
+    	
+    }
+    
+public void escribirFichero() throws IOException {
+    	
+	FileWriter fichero = null;
+    PrintWriter pw = null;
+    try
+    {
+        fichero = new FileWriter("c:/Entrada.txt");
+        pw = new PrintWriter(fichero);
+
+        pw.println("Linea " + "3.5");
+
+    } catch (Exception e) {
+        e.printStackTrace();
+    } finally {
+       try {
+       // Nuevamente aprovechamos el finally para 
+       // asegurarnos que se cierra el fichero.
+       if (null != fichero)
+          fichero.close();
+       } catch (Exception e2) {
+          e2.printStackTrace();
+       }
+    }
+    }
+
 }

@@ -1,6 +1,7 @@
 package com.capgemini;
 
-public class Rey {
+public class Rey extends Pieza {
+	
 	
 	public Rey(Color col) {
 		

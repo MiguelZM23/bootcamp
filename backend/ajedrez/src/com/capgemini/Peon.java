@@ -1,6 +1,6 @@
 package com.capgemini;
 
-public class Peon {
+public class Peon extends Pieza{
 	
 	public Peon(Color col) {
 		

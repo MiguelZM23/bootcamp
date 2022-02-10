@@ -1,6 +1,6 @@
 package com.capgemini;
 
-public class Dama {
+public class Dama extends Pieza{
 public Dama(Color col) {
 		
 	}

@@ -4,6 +4,15 @@ public abstract class Pieza {
 	
 	Color color;
 	
+	
+	public Pieza(Color color) {
+		this.color = color;
+	}
+	public Pieza() {
+		
+	}
+	
+	
 	boolean esValido(Movimiento mov, Tablero tablero) {
 		return false;
 	}

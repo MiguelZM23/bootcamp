@@ -7,6 +7,9 @@ public class Juego {
 	boolean partidaActiva = false;
 	
 	public void inicializar() {
+		Tablero tablero = new Tablero();
+		
+	
 		
 	}
 	

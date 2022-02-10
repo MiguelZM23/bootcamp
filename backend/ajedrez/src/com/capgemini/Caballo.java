@@ -1,6 +1,6 @@
 package com.capgemini;
 
-public class Caballo {
+public class Caballo extends Pieza{
 	
 	public Caballo(Color col) {
 		

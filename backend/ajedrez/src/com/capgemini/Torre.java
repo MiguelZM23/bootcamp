@@ -1,6 +1,6 @@
 package com.capgemini;
 
-public class Torre {
+public class Torre extends Pieza{
 	public Torre(Color col) {
 		
 	}

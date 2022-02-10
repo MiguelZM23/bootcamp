@@ -1,6 +1,6 @@
 package com.capgemini;
 
-public class Alfil {
+public class Alfil extends Pieza{
 
 	public Alfil(Color col) {
 		

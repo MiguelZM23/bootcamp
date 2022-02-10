@@ -3,9 +3,9 @@ package com.capgemini;
 public class DecodificarCadenas {
 	// Ejercicio 2- Decodificar cadenas
 
-	public void inicializar(){
+	public void inicializar(String cadena){
 		System.out.println("Decodificar la siguiente cadena:");
-		String cadena = "3+4+3,4-7*1=";
+		//String cadena = "3+4+3,4-7*1=";
 		int[] numeros = new int[12];
 		float decimal = 0;System.out.println(cadena);
 		char operandos[] = new char[7];

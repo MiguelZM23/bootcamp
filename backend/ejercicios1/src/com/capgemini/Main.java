@@ -5,6 +5,8 @@ package com.capgemini;
 import com.capgemini.juegoAdivinaNumeroYTest.Juego;
 import com.capgemini.juegoAdivinaNumeroYTest.JuegoException;
 import com.naipes.*;
+
+import java.io.IOException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -24,8 +26,9 @@ public class Main {
 
 	/**
 	 * @param args
+	 * @throws IOException 
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		Main app = new Main();
 		app.run();
 		String respuesta;
@@ -41,6 +44,7 @@ public class Main {
 		System.out.println("2. Decodificar cadenas");
 		System.out.println("3. Juego de cartas");
 		System.out.println("4. Juego del Número con Clase");
+		System.out.println("5. Calculadora");
 		respuesta = teclado.nextLine();
 
 		if (respuesta.equals("1")) {
@@ -67,6 +71,11 @@ public class Main {
 			
 		}else if(respuesta.equals("4")) {
 			app.juegoConClase();
+			
+		}else if(respuesta.equals("5")) {
+			Calculadora calculadora = new Calculadora();
+			calculadora.leerFichero();
+			calculadora.escribirFichero();
 			
 		}else {
 			System.out.println("Vuelve a ejecutar e introduce un valor válido");
