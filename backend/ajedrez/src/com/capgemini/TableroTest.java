@@ -15,6 +15,7 @@ class TableroTest {
 	@BeforeEach
 	void setUp() throws Exception {
 	tablero = new Tablero();
+	tablero.rellenarTablero();
 	escaque = tablero.new Escaque(1,1);
 	escaque2 = tablero.new Escaque(2,2);
 	Rey rey = new Rey(Color.BLANCO);
@@ -25,6 +26,14 @@ class TableroTest {
 	void test_hayPieza() {
 		assertFalse(escaque.hayPieza());
 		assertTrue(escaque2.hayPieza());
+	}
+	
+	@Test
+	void test_tamaño_tablero(){
+		tablero.piezas.forEach((n)-> System.out.println(n));
+		System.out.println(tablero.prueba);
+		assertEquals(64, tablero.piezas.size());
+		
 	}
 
 }
