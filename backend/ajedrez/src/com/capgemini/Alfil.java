@@ -3,9 +3,13 @@ package com.capgemini;
 public class Alfil extends Pieza{
 	Pieza alfil;
 	Color color;
+
 	public Alfil(Color color) {
 		this.color = color;
 	}
+	/**
+	 * Comprueba si el movimiento es válido.
+	 */
 	boolean esValido(Movimiento mov, Tablero tablero) {
 		alfil = new Alfil(color);
 

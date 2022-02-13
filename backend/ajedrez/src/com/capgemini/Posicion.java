@@ -19,7 +19,12 @@ public class Posicion {
 			throw new JuegoException("Valor fuera del rango permitido utilizar valores entre 1 y 8");
 		
 	}
-	
+	/**
+	 * Indica si dos posiciones son iguales
+	 * @param pos
+	 * @return
+	 * @throws JuegoException
+	 */
 	public boolean equals(Posicion pos) throws JuegoException {
 		if (pos == null) 
 			throw new JuegoException("La posición no puede ser nula");

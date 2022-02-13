@@ -6,6 +6,9 @@ public class Caballo extends Pieza{
 	public Caballo(Color color) {
 		this.color = color;
 	}
+	/**
+	 * Comprueba si el movimiento es válido.
+	 */
 	boolean esValido(Movimiento mov, Tablero tablero) {
 		caballo = new Caballo(color);
 

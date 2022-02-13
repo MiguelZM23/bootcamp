@@ -8,6 +8,9 @@ public class Dama extends Pieza{
 		this.color = color;
 		
 	}
+	/**
+	 * Comprueba si el movimiento es válido.
+	 */
 	boolean esValido(Movimiento mov, Tablero tablero) {
 		dama = new Dama(color);
 

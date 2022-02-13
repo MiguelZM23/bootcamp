@@ -3,10 +3,13 @@ package com.capgemini;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayNameGeneration;
+import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
 
 import com.capgemini.Tablero.Escaque;
 
+@DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 class TableroTest {
 	Tablero tablero;
 	Escaque escaque;
@@ -20,7 +23,7 @@ class TableroTest {
 	Rey rey = new Rey(Color.BLANCO);
 	
 	}
-
+	
 	@Test
 	void test_hayPieza() {
 		assertFalse(escaque.hayPieza());

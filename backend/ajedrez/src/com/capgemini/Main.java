@@ -1,4 +1,9 @@
 package com.capgemini;
+/**
+ * Aplicación Ajedrez
+ * @author mizapata
+ *
+ */
 
 public class Main {
 

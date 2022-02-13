@@ -7,6 +7,9 @@ public class Rey extends Pieza {
 	public Rey(Color color) {
 		this.color = color;
 	}
+	/**
+	 * Comprueba si el movimiento es válido.
+	 */
 	boolean esValido(Movimiento mov, Tablero tablero) {
 		
 		rey = new Rey(color);

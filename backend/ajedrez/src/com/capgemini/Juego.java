@@ -4,54 +4,69 @@ import java.util.Scanner;
 
 import com.capgemini.Tablero.Escaque;
 
+/**
+ * 
+ * @author mizapata
+ *
+ */
+
 public class Juego {
 
 	Tablero tablero;
 	Color turno = Color.BLANCO;
 	boolean partidaActiva = false;
 
+	/**
+	 * Inicializa el juego
+	 */
 	public void inicializar() {
-		
+
 		Tablero tablero = new Tablero();
-		tablero.rellenarTablero();		
+		tablero.rellenarTablero();
 		partidaActiva = true;
 	}
-
+	/**
+	 * Procesa la jugada
+	 * @param jugada
+	 * @throws JuegoException
+	 */
 	public void jugada(String jugada) throws JuegoException {
 		Scanner teclado = new Scanner(System.in);
 		String jugada1 = "";
 		Movimiento mov;
 		Posicion posInicial;
 		Posicion posFinal;
-		
-		while(partidaActiva) {
+
+		while (partidaActiva) {
 			jugada1 = teclado.nextLine();
 			mov = new Movimiento(jugada1);
 			Pieza pieza;
 			Escaque escaqueInicial = tablero.findEscaque(mov.getPosIni());
-			
+
 			if (escaqueInicial.hayPieza()) {
 				pieza = escaqueInicial.getPieza();
-				if(pieza.esValido(mov, tablero)) {
+				if (pieza.esValido(mov, tablero)) {
 					mover(mov);
-				}
-				
-			}else {
+				} else
+					System.out.println("Movimiento no válido");
+
+			} else {
 				System.out.println("No hay pieza en la posicion inicial");
 				continue;
 			}
-			
+
 			cambiaTurno();
 		}
-		
-		
-		
-		
 
 	}
 
+	/**
+	 * Mueve la pieza
+	 * @param mov
+	 * @throws JuegoException
+	 */
 	public void mover(Movimiento mov) throws JuegoException {
-		
+
 		Pieza pieza;
 		pieza = tablero.findEscaque(mov.getPosIni()).getPieza();
 		tablero.findEscaque(mov.getPosFin()).quitaPieza();
@@ -59,17 +74,22 @@ public class Juego {
 
 	}
 
+	/**
+	 * Cambia el turno
+	 */
 	public void cambiaTurno() {
-		
-		if (turno == Color.BLANCO) turno = Color.NEGRO;
-		else turno = Color.BLANCO;
+
+		if (turno == Color.BLANCO)
+			turno = Color.NEGRO;
+		else
+			turno = Color.BLANCO;
 
 	}
 
 	public void promocionaPeon(Object o, PromocionEventArgs e) {
 
 	}
-
+	
 	public Tablero getTablero() {
 		return tablero;
 	}

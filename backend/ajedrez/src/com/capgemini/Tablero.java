@@ -7,7 +7,9 @@ public class Tablero implements Cloneable {
 
 	public ArrayList<Escaque> piezas = new ArrayList<Escaque>();
 	Escaque escaque;
-
+	/**
+	 * Rellena el tablero con los escaques y las piezas.
+	 */
 	public void rellenarTablero() {
 		Pieza pieza = null;		
 			
@@ -41,13 +43,12 @@ public class Tablero implements Cloneable {
 				
 				piezas.add(escaque);
 			}
-			
-
 		}
-	
-		piezas.forEach(n -> System.out.println(n.color));
 	}
-
+	/*
+	 * Clase anidada Escaque
+	 *
+	 */
 	public class Escaque {
 		private int col;
 		private int fila;
@@ -70,7 +71,10 @@ public class Tablero implements Cloneable {
 			this.fila = fila;
 			this.pieza = pieza;
 		}
-
+		/**
+		 * Indica si hay pieza
+		 * @return
+		 */
 		public boolean hayPieza() {
 			if (pieza != null)
 				return true;
@@ -85,11 +89,22 @@ public class Tablero implements Cloneable {
 			
 			this.pieza = pieza;
 		}
-		
+		/**
+		 * Quita la pieza
+		 * @throws JuegoException
+		 */
 		public void quitaPieza() throws JuegoException {
 			
 			if (hayPieza() == false) System.out.println("No hay pieza, no puedo quitarla");
 			setPieza(null);
+		}
+		/**
+		 * Devuelve el color del Escaque
+		 * @return
+		 */
+		public Color colorEscaque() {
+			
+			return color;
 		}
 		
 		public Posicion getPos() {
@@ -110,7 +125,13 @@ public class Tablero implements Cloneable {
 		
 		
 	}
-
+	/**
+	 * Busca el Escaque a partir de la posición
+	 * @param col
+	 * @param fila
+	 * @return
+	 * @throws JuegoException
+	 */
 	public Escaque findEscaque(int col, int fila) throws JuegoException {
 		Posicion pos = new Posicion(col, fila);
 		findEscaque(pos);
@@ -137,25 +158,16 @@ public class Tablero implements Cloneable {
 		return hayPieza(pos);
 	}
 
-	
-
-	public void quitaPieza(Posicion pos) {
-		escaque = new Escaque(pos);
-		Escaque escaqueSeleccionado;
-		
-		//if (escaqueSeleccionado = (piezas.contains(escaqueDummy))) escaqueDummy.getPieza() != null
-		
-	}
-
 	public Object clone() throws CloneNotSupportedException {
 		return super.clone();
 	}
-
-	public Color colorEscaque(int col, int fila) {
-		Color color = Color.BLANCO;
-		return color;
-	}
-
+	/**
+	 * Comprueba si hay piezas en medio del trayecto del movimiento 
+	 * que se quiere realizar
+	 * @param mov
+	 * @return
+	 * @throws JuegoException
+	 */
 	public boolean hayPiezasEntre(Movimiento mov) throws JuegoException {
 		Escaque escaqueInicial;
 		Escaque escaqueFinal;
