@@ -173,18 +173,47 @@ public class Tablero implements Cloneable {
 		return color;
 	}
 
-	public boolean hayPiezasEntre(Movimiento mov) {
-		return true;
+	public boolean hayPiezasEntre(Movimiento mov) throws JuegoException {
+		Escaque escaqueInicial;
+		Escaque escaqueFinal;
+		Pieza pieza;
+		int salto = 0;
+		
+		
+		escaqueInicial = findEscaque(mov.getPosIni());
+		escaqueFinal = findEscaque(mov.getPosFin());
+		
+		if(mov.esHorizontal()) {
+			salto = mov.saltoHorizontal();
+			
+			for(int i = 0; i< salto; i++) {
+				if(findEscaque(mov.getPosIni().getFila()+mov.deltaFila(), mov.getPosFin().getFila()).hayPieza()) {
+					return true;
+				}
+			}
+		
+		}else if(mov.esVertical()) {
+			salto = mov.saltoVertical();
+			for(int i = 0; i< salto; i++) {
+				if(findEscaque(mov.getPosIni().getCol()+mov.deltaFila(), mov.getPosFin().getCol()).hayPieza()) {
+					return true;
+				}
+			}
+		}
+		else if(mov.esDiagonal()) {
+			salto = mov.saltoHorizontal();
+			for(int i = 0; i< salto; i++) {
+				if(findEscaque(mov.getPosIni().getFila()+mov.deltaFila(), (mov.getPosIni().getFila()+mov.deltaFila())+mov.deltaColumna()).hayPieza()) {
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 
 	public ArrayList<Escaque> getPiezas() {
 		return piezas;
 	}
-
-	/*public void setPiezas(ArrayList<Escaque> piezas) {
-		this.piezas = piezas;
-	}*/
-
 
 	}
 
