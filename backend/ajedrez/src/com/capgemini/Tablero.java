@@ -9,15 +9,7 @@ public class Tablero implements Cloneable {
 	Escaque escaque;
 
 	public void rellenarTablero() {
-		Pieza pieza = null;
-		Torre torre;
-		
-		Caballo caballo = null;
-		Alfil alfil;
-		Rey rey;
-		Dama dama;
-		Peon peon;
-		
+		Pieza pieza = null;		
 			
 		Color color = Color.BLANCO;
 		
@@ -133,10 +125,6 @@ public class Tablero implements Cloneable {
 		return escaque;
 	}
 
-	private boolean esValido(int i) {
-		return true;
-	}
-
 	public boolean hayPieza(Posicion pos) {
 		escaque = new Escaque(pos);
 		if (piezas.contains(escaque) && escaque.getPieza() != null) 
@@ -159,13 +147,8 @@ public class Tablero implements Cloneable {
 		
 	}
 
-	public void mover(Movimiento mov) {
-
-	}
-
-	public Object clone() {
-		Object object = "";
-		return object;
+	public Object clone() throws CloneNotSupportedException {
+		return super.clone();
 	}
 
 	public Color colorEscaque(int col, int fila) {

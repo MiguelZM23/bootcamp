@@ -1,18 +1,50 @@
 package com.capgemini;
 
+import java.util.Scanner;
+
+import com.capgemini.Tablero.Escaque;
+
 public class Juego {
 
 	Tablero tablero;
-	Color turno;
+	Color turno = Color.BLANCO;
 	boolean partidaActiva = false;
 
 	public void inicializar() {
 		
 		Tablero tablero = new Tablero();
 		tablero.rellenarTablero();		
+		partidaActiva = true;
 	}
 
-	public void jugada(String jugada) {
+	public void jugada(String jugada) throws JuegoException {
+		Scanner teclado = new Scanner(System.in);
+		String jugada1 = "";
+		Movimiento mov;
+		Posicion posInicial;
+		Posicion posFinal;
+		
+		while(partidaActiva) {
+			jugada1 = teclado.nextLine();
+			mov = new Movimiento(jugada1);
+			Pieza pieza;
+			Escaque escaqueInicial = tablero.findEscaque(mov.getPosIni());
+			
+			if (escaqueInicial.hayPieza()) {
+				pieza = escaqueInicial.getPieza();
+				if(pieza.esValido(mov, tablero)) {
+					mover(mov);
+				}
+				
+			}else {
+				System.out.println("No hay pieza en la posicion inicial");
+				continue;
+			}
+			
+			cambiaTurno();
+		}
+		
+		
 		
 		
 
