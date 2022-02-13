@@ -13,7 +13,8 @@ public class Main {
 
 	private void run() {
 		// TODO Auto-generated method stub
-		
+		Juego juego = new Juego();
+		juego.inicializar();
 	}
 	
 	

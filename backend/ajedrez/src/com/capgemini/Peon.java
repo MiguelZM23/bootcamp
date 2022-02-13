@@ -1,9 +1,10 @@
 package com.capgemini;
 
 public class Peon extends Pieza{
+	Color color;
 	
-	public Peon(Color col) {
-		
+	public Peon(Color color) {
+		this.color = color;
 	}
 	boolean esValido(Movimiento mov, Tablero tablero) {
 		return false;

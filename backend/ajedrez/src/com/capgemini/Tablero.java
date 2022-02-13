@@ -6,37 +6,64 @@ import java.util.List;
 public class Tablero implements Cloneable {
 
 	public ArrayList<Escaque> piezas = new ArrayList<Escaque>();
-	Escaque escaqueDummy = new Escaque(0, 0);
-	int prueba = 1;
-	Rey rey = new Rey(Color.BLANCO);
-
-	/*
-	 * public Pieza escaque(int col, int fila) {
-	 * 
-	 * hayPieza(col, fila);
-	 * 
-	 * return rey; } public Pieza escaque(Posicion pos) {
-	 * 
-	 * 
-	 * return rey; }
-	 */
+	Escaque escaque;
 
 	public void rellenarTablero() {
+		Pieza pieza = null;
+		Torre torre;
+		
+		Caballo caballo = null;
+		Alfil alfil;
+		Rey rey;
+		Dama dama;
+		Peon peon;
+		
+			
+		Color color = Color.BLANCO;
+		
 		for (int i = 1; i <= 8; i++) {
 			for (int j = 1; j <= 8; j++) {
-				piezas.add(new Escaque(i, j));
+				
+			if(j <= 2 || j >=7) {
+			  
+				color = Color.BLANCO;
+				if(i ==1 && j==1 || i == 8 && j == 1) pieza = new Torre(color);
+				if(i ==2 && j==1 || i == 7 && j == 1) pieza = new Caballo(color);
+				if(i ==3 && j==1 || i == 6 && j == 1) pieza = new Alfil(color);
+				if(i ==4 && j==1) pieza = new Rey(color);
+				if(i ==5 && j==1) pieza = new Dama(color);
+				if(i <=8 && j==2) pieza = new Peon(color);
+				
+				color = Color.NEGRO;
+				if(i ==1 && j==8 || i == 8 && j == 8) pieza = new Torre(color);
+				if(i ==2 && j==8 || i == 7 && j == 8) pieza = new Caballo(color);
+				if(i ==3 && j==8 || i == 6 && j == 8) pieza = new Alfil(color);
+				if(i ==4 && j==8) pieza = new Rey(color);
+				if(i ==5 && j==8) pieza = new Dama(color);
+				if(i <=8 && j==7) pieza = new Peon(color);
+			}else pieza = null;
+				Escaque escaque = new Escaque(i,j,pieza);
+				int modulo = (i+j)%2;
+				if( modulo == 0) escaque.setColor(Color.NEGRO);
+				else escaque.setColor(Color.BLANCO);
+				
+				piezas.add(escaque);
 			}
+			
 
 		}
-
+	
+		piezas.forEach(n -> System.out.println(n.color));
 	}
 
 	public class Escaque {
-		int col;
-		int fila;
-		Color color;
-		Posicion pos;
-		Pieza pieza;
+		private int col;
+		private int fila;
+		private Color color;
+		private Posicion pos;
+		private Pieza pieza;
+		
+	
 
 		public Escaque(int col, int fila) {
 			this.col = col;
@@ -46,29 +73,73 @@ public class Tablero implements Cloneable {
 		public Escaque(Posicion pos) {
 			this.pos = pos;
 		}
+		public Escaque(int col, int fila,  Pieza pieza) {
+			this.col = col; 
+			this.fila = fila;
+			this.pieza = pieza;
+		}
 
 		public boolean hayPieza() {
 			if (pieza != null)
 				return true;
 			return false;
 		}
-
+		
 		public Pieza getPieza() {
 			return pieza;
 		}
 
 		public void setPieza(Pieza pieza) {
+			
 			this.pieza = pieza;
 		}
+		
+		public void quitaPieza() throws JuegoException {
+			
+			if (hayPieza() == false) System.out.println("No hay pieza, no puedo quitarla");
+			setPieza(null);
+		}
+		
+		public Posicion getPos() {
+			return pos;
+		}
 
+		public void setPos(Posicion pos) {
+			this.pos = pos;
+		}
+
+		public Color getColor() {
+			return color;
+		}
+
+		public void setColor(Color color) {
+			this.color = color;
+		}
+		
+		
+	}
+
+	public Escaque findEscaque(int col, int fila) throws JuegoException {
+		Posicion pos = new Posicion(col, fila);
+		findEscaque(pos);
+		return escaque;
+	}
+	
+	
+	
+	public Escaque findEscaque(Posicion pos) {
+		Escaque escaque = (Escaque) piezas.stream()
+				.filter(escaque1 -> escaque1.getPos() == pos);
+		return escaque;
+	}
 
 	private boolean esValido(int i) {
 		return true;
 	}
 
 	public boolean hayPieza(Posicion pos) {
-		escaqueDummy = new Escaque(pos);
-		if (piezas.contains(escaqueDummy) && escaqueDummy.getPieza() != null) 
+		escaque = new Escaque(pos);
+		if (piezas.contains(escaque) && escaque.getPieza() != null) 
 			return true;
 		return false;
 	}
@@ -78,14 +149,12 @@ public class Tablero implements Cloneable {
 		return hayPieza(pos);
 	}
 
-	public void quitaPieza(int col, int fila) {
-		
-	}
+	
 
 	public void quitaPieza(Posicion pos) {
-		escaqueDummy = new Escaque(pos);
+		escaque = new Escaque(pos);
 		Escaque escaqueSeleccionado;
-		if (hayPieza(pos) == false) System.out.println("No hay pieza, no puedo quitarla");
+		
 		//if (escaqueSeleccionado = (piezas.contains(escaqueDummy))) escaqueDummy.getPieza() != null
 		
 	}
@@ -116,5 +185,7 @@ public class Tablero implements Cloneable {
 		this.piezas = piezas;
 	}*/
 
-}
+
 	}
+
+

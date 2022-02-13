@@ -1,7 +1,10 @@
 package com.capgemini;
 
 public class Dama extends Pieza{
-public Dama(Color col) {
+	Color color;
+	
+	public Dama(Color color) {
+		this.color = color;
 		
 	}
 	boolean esValido(Movimiento mov, Tablero tablero) {
