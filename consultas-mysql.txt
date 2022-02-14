@@ -1,0 +1,40 @@
+consultas a sakila
+Obtener todos los actores de nombre ‘NICK’.
+
+SELECT *
+FROM actor
+WHERE actor.first_name LIKE'NICK'
+
+Obtener una lista con todos los distritos distintos (district en address).
+
+SELECT DISTINCT district
+FROM address
+
+Obtener las películas sobre agentes secretos (description contiene ‘Secret Agent’).
+
+SELECT *
+FROM film
+WHERE film.description LIKE '%Secret Agent%'
+
+Mostrar la lista de las películas mas caras (coste por minuto)
+
+SELECT film_id, title, 	'length', 'rental_rate',   (film.rental_rate/film.length) coste_por_minuto
+FROM film
+ORDER BY coste_por_minuto DESC
+
+Obtener los códigos y medias de gasto de los clientes que han gastado mas de 100 en menos de 25 operaciones.
+
+SELECT customer.customer_id, customer.first_name, AVG(payment.amount)
+FROM customer, payment WHERE payment.customer_id = customer.customer_id
+GROUP BY customer.customer_id
+HAVING COUNT(payment.amount)<25 AND SUM(payment.amount) >100
+
+
+Obtener los 5 nombres de actor más repetidos (aprox).
+
+Este lo tengo a medias:
+SELECT actor.first_name, COUNT(actor.first_name )
+FROM film, actor, film_actor WHERE film.film_id = film_actor.film_id
+GROUP BY actor.first_name
+
+
