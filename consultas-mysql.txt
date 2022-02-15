@@ -32,9 +32,13 @@ HAVING COUNT(payment.amount)<25 AND SUM(payment.amount) >100
 
 Obtener los 5 nombres de actor más repetidos (aprox).
 
-Este lo tengo a medias:
 SELECT actor.first_name, COUNT(actor.first_name )
 FROM film, actor, film_actor WHERE film.film_id = film_actor.film_id
-GROUP BY actor.first_name
+AND actor.actor_id = film_actor.actor_id
+GROUP BY actor.first_name LIMIT 5 OFFSET 0
+
+Para felicitar el año nuevo chino se necesita el listado con los datos postales de los clientes residentes en China y Taiwan
+
+
 
 
