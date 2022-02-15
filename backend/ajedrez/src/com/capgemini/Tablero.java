@@ -158,8 +158,8 @@ public class Tablero implements Cloneable {
 		return hayPieza(pos);
 	}
 
-	public Object clone() throws CloneNotSupportedException {
-		return super.clone();
+	public Tablero clone() throws CloneNotSupportedException {
+		return (Tablero) super.clone();
 	}
 	/**
 	 * Comprueba si hay piezas en medio del trayecto del movimiento 

@@ -39,6 +39,36 @@ GROUP BY actor.first_name LIMIT 5 OFFSET 0
 
 Para felicitar el año nuevo chino se necesita el listado con los datos postales de los clientes residentes en China y Taiwan
 
+SELECT customer.customer_id, customer.first_name, customer.last_name, address.district, address.city_id, address.postal_code, address.address, address.address2, country.country
+FROM customer, country, city, address  WHERE customer.customer_id = address.address_id
+AND address.address_id = city.city_id AND city.city_id = country.country_id
+AND country.country REGEXP 'Taiwan|China'
+
+Mostrar los datos de las tiendas, conocidas por la ciudad y país donde están ubicadas, indicando el nombre del gerente, el numero de películas en inventario, el numero de títulos diferentes y el número de clientes atendidos.
+
+SELECT DISTINCT store.store_id, store.manager_staff_id, country.country, staff.first_name, staff.last_name
+FROM store, address, city, country, rental,staff
+WHERE store.address_id = address.address_id AND city.city_id = address.city_id 
+AND country.country_id = city.country_id AND store.store_id = staff.store_id AND staff.staff_id = rental.staff_id
+
+
+En curso:
+Obtener el listado detallado de alquileres indicando el identificador de alquiler, el titulo alquilado, las fechas de alquiler, devolución y tiempo transcurrido, nombres del cliente (nombre con apellidos), empleado (nombre con apellidos) y tienda (ciudad, país).
+
+SELECT r.rental_id, r.rental_date, r.customer_id, c.first_name, c.last_name, s.first_name AS manager_name, s.last_name AS manager_last_name, st.store_id, ci.city, cou.country
+FROM rental r, customer c, staff s, store st, address a, city ci, country cou
+WHERE r.customer_id = c.customer_id AND s.store_id = st.store_id  AND st.address_id = a.address_id 
+AND a.city_id = ci.city_id AND cou.country_id = ci.country_id
+
+
+
+Generar la lista diaria de alquileres vencidos no devueltos para poder llamar a los clientes y pedirles que los devuelvan, para ello debe mostrar las fechas de alquiler y vencimiento, el teléfono y nombre del cliente, así como el titulo de la película, priorizando los que mas tiempo llevan vencidos.
+
+
+
+Elaborar el ranking de los países que más alquilan las películas de GINA DEGENERES.
+
+
 
 
 

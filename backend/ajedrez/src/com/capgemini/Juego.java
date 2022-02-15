@@ -90,8 +90,8 @@ public class Juego {
 
 	}
 	
-	public Tablero getTablero() {
-		return tablero;
+	public Tablero getTablero() throws CloneNotSupportedException {
+		return tablero.clone();
 	}
 
 	public void setTablero(Tablero tablero) {
