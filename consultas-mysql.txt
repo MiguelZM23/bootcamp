@@ -55,18 +55,68 @@ AND country.country_id = city.country_id AND store.store_id = staff.store_id AND
 /*En curso:
 Obtener el listado detallado de alquileres indicando el identificador de alquiler, el titulo alquilado, las fechas de alquiler, devolución y tiempo transcurrido, nombres del cliente (nombre con apellidos), empleado (nombre con apellidos) y tienda (ciudad, país).*/
 
-SELECT r.rental_id, r.rental_date, r.customer_id, c.first_name, c.last_name, s.first_name AS manager_name, s.last_name AS manager_last_name, st.store_id, ci.city, cou.country
-FROM rental r, customer c, staff s, store st, address a, city ci, country cou
-WHERE r.customer_id = c.customer_id AND s.store_id = st.store_id  AND st.address_id = a.address_id 
-AND a.city_id = ci.city_id AND cou.country_id = ci.country_id
+SELECT rent.rental_id, f.title, rent.rental_date, rent.return_date, 
+		DATEDIFF(rent.return_date, rent.rental_date) time_passed,  
+		CONCAT (c.first_name, ' ', c.last_name) customer_name,
+		CONCAT (UPPER(s.first_name), ' ', UPPER(s.last_name)) staff_name,
+		UPPER(cit.city), UPPER(COUNT.country)
+		
+FROM rental rent
+INNER JOIN inventory inv ON inv.inventory_id = rent.inventory_id 
+INNER JOIN film f ON inv.film_id = f.film_id
+INNER JOIN customer c ON rent.customer_id = c.customer_id
+INNER JOIN staff s ON s.staff_id = rent.staff_id
+INNER JOIN store st ON s.store_id =  st.store_id
+INNER JOIN address a ON st.address_id = a.address_id
+INNER JOIN city cit ON cit.city_id = a.city_id
+INNER JOIN country COUNT ON cit.country_id = COUNT.country_id
 
 
 
 /*Generar la lista diaria de alquileres vencidos no devueltos para poder llamar a los clientes y pedirles que los devuelvan, para ello debe mostrar las fechas de alquiler y vencimiento, el teléfono y nombre del cliente, así como el titulo de la película, priorizando los que mas tiempo llevan vencidos.*/
 
-
+SELECT r.rental_date, r.return_date, DATEDIFF(NOW(), r.rental_date) time_passed,
+		a.phone, c.first_name, f.title
+FROM rental r
+INNER JOIN customer c ON	c.customer_id = r.customer_id
+INNER JOIN inventory inv ON inv.inventory_id = r.inventory_id
+INNER JOIN film f ON f.film_id = inv.film_id
+INNER JOIN address a ON c.address_id = a.address_id
+WHERE r.return_date IS NULL
+ORDER BY time_passed DESC
 
 /*Elaborar el ranking de los países que más alquilan las películas de GINA DEGENERES.*/
+
+SELECT cou.country, COUNT(r.rental_id) AS rental_count
+
+FROM rental r
+INNER JOIN customer c ON r.customer_id = c.customer_id
+INNER JOIN address a ON  c.address_id = a.address_id
+INNER JOIN city ci ON a.city_id = ci.city_id
+INNER JOIN country cou ON ci.country_id = cou.country_id
+INNER JOIN inventory i ON r.inventory_id = i.inventory_id
+INNER JOIN film_actor fa ON i.film_id = fa.film_id
+INNER JOIN actor ac ON fa.actor_id = ac.actor_id
+WHERE ac.first_name = 'GINA' AND ac.last_name = 'DEGENERES'
+GROUP BY cou.country
+ORDER BY rental_count DESC
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
