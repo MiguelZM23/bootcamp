@@ -1,28 +1,28 @@
-consultas a sakila
-Obtener todos los actores de nombre ‘NICK’.
+/*consultas a sakila
+Obtener todos los actores de nombre ‘NICK’.*/
 
 SELECT *
 FROM actor
 WHERE actor.first_name LIKE'NICK'
 
-Obtener una lista con todos los distritos distintos (district en address).
+/*Obtener una lista con todos los distritos distintos (district en address).*/
 
 SELECT DISTINCT district
 FROM address
 
-Obtener las películas sobre agentes secretos (description contiene ‘Secret Agent’).
+/*Obtener las películas sobre agentes secretos (description contiene ‘Secret Agent’).*/
 
 SELECT *
 FROM film
 WHERE film.description LIKE '%Secret Agent%'
 
-Mostrar la lista de las películas mas caras (coste por minuto)
+/*Mostrar la lista de las películas mas caras (coste por minuto)*/
 
 SELECT film_id, title, 	'length', 'rental_rate',   (film.rental_rate/film.length) coste_por_minuto
 FROM film
 ORDER BY coste_por_minuto DESC
 
-Obtener los códigos y medias de gasto de los clientes que han gastado mas de 100 en menos de 25 operaciones.
+/*Obtener los códigos y medias de gasto de los clientes que han gastado mas de 100 en menos de 25 operaciones.*/
 
 SELECT customer.customer_id, customer.first_name, AVG(payment.amount)
 FROM customer, payment WHERE payment.customer_id = customer.customer_id
@@ -30,21 +30,21 @@ GROUP BY customer.customer_id
 HAVING COUNT(payment.amount)<25 AND SUM(payment.amount) >100
 
 
-Obtener los 5 nombres de actor más repetidos (aprox).
+/*Obtener los 5 nombres de actor más repetidos (aprox).*/
 
 SELECT actor.first_name, COUNT(actor.first_name )
 FROM film, actor, film_actor WHERE film.film_id = film_actor.film_id
 AND actor.actor_id = film_actor.actor_id
 GROUP BY actor.first_name LIMIT 5 OFFSET 0
 
-Para felicitar el año nuevo chino se necesita el listado con los datos postales de los clientes residentes en China y Taiwan
+/*Para felicitar el año nuevo chino se necesita el listado con los datos postales de los clientes residentes en China y Taiwan*/
 
 SELECT customer.customer_id, customer.first_name, customer.last_name, address.district, address.city_id, address.postal_code, address.address, address.address2, country.country
 FROM customer, country, city, address  WHERE customer.customer_id = address.address_id
 AND address.address_id = city.city_id AND city.city_id = country.country_id
 AND country.country REGEXP 'Taiwan|China'
 
-Mostrar los datos de las tiendas, conocidas por la ciudad y país donde están ubicadas, indicando el nombre del gerente, el numero de películas en inventario, el numero de títulos diferentes y el número de clientes atendidos.
+/*Mostrar los datos de las tiendas, conocidas por la ciudad y país donde están ubicadas, indicando el nombre del gerente, el numero de películas en inventario, el numero de títulos diferentes y el número de clientes atendidos.*/
 
 SELECT DISTINCT store.store_id, store.manager_staff_id, country.country, staff.first_name, staff.last_name
 FROM store, address, city, country, rental,staff
@@ -52,8 +52,8 @@ WHERE store.address_id = address.address_id AND city.city_id = address.city_id
 AND country.country_id = city.country_id AND store.store_id = staff.store_id AND staff.staff_id = rental.staff_id
 
 
-En curso:
-Obtener el listado detallado de alquileres indicando el identificador de alquiler, el titulo alquilado, las fechas de alquiler, devolución y tiempo transcurrido, nombres del cliente (nombre con apellidos), empleado (nombre con apellidos) y tienda (ciudad, país).
+/*En curso:
+Obtener el listado detallado de alquileres indicando el identificador de alquiler, el titulo alquilado, las fechas de alquiler, devolución y tiempo transcurrido, nombres del cliente (nombre con apellidos), empleado (nombre con apellidos) y tienda (ciudad, país).*/
 
 SELECT r.rental_id, r.rental_date, r.customer_id, c.first_name, c.last_name, s.first_name AS manager_name, s.last_name AS manager_last_name, st.store_id, ci.city, cou.country
 FROM rental r, customer c, staff s, store st, address a, city ci, country cou
@@ -62,11 +62,11 @@ AND a.city_id = ci.city_id AND cou.country_id = ci.country_id
 
 
 
-Generar la lista diaria de alquileres vencidos no devueltos para poder llamar a los clientes y pedirles que los devuelvan, para ello debe mostrar las fechas de alquiler y vencimiento, el teléfono y nombre del cliente, así como el titulo de la película, priorizando los que mas tiempo llevan vencidos.
+/*Generar la lista diaria de alquileres vencidos no devueltos para poder llamar a los clientes y pedirles que los devuelvan, para ello debe mostrar las fechas de alquiler y vencimiento, el teléfono y nombre del cliente, así como el titulo de la película, priorizando los que mas tiempo llevan vencidos.*/
 
 
 
-Elaborar el ranking de los países que más alquilan las películas de GINA DEGENERES.
+/*Elaborar el ranking de los países que más alquilan las películas de GINA DEGENERES.*/
 
 
 

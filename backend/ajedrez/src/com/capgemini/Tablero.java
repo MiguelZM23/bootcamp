@@ -159,6 +159,7 @@ public class Tablero implements Cloneable {
 	}
 
 	public Tablero clone() throws CloneNotSupportedException {
+		
 		return (Tablero) super.clone();
 	}
 	/**
