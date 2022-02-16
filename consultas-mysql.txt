@@ -46,10 +46,17 @@ AND country.country REGEXP 'Taiwan|China'
 
 /*Mostrar los datos de las tiendas, conocidas por la ciudad y país donde están ubicadas, indicando el nombre del gerente, el numero de películas en inventario, el numero de títulos diferentes y el número de clientes atendidos.*/
 
-SELECT DISTINCT store.store_id, store.manager_staff_id, country.country, staff.first_name, staff.last_name
-FROM store, address, city, country, rental,staff
-WHERE store.address_id = address.address_id AND city.city_id = address.city_id 
-AND country.country_id = city.country_id AND store.store_id = staff.store_id AND staff.staff_id = rental.staff_id
+SELECT ci.city, cou.country, st.store_id, s.first_name, COUNT(inv.film_id) films_invent,
+	COUNT(DISTINCT inv.film_id) films_unique
+
+FROM store st
+INNER JOIN inventory inv ON inv.store_id = st.store_id
+INNER JOIN address a ON a.address_id = st.address_id
+INNER JOIN city ci ON ci.city_id = a.city_id
+INNER JOIN country cou ON cou.country_id = ci.country_id
+INNER JOIN staff s ON s.staff_id = st.manager_staff_id
+
+GROUP BY st.store_id
 
 
 /*En curso:
