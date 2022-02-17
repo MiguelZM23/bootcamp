@@ -14,6 +14,7 @@ public class Juego {
 
 	Tablero tablero;
 	Color turno = Color.BLANCO;
+	Color piezaColor;
 	boolean partidaActiva = false;
 
 	/**
@@ -30,9 +31,9 @@ public class Juego {
 	 * @param jugada
 	 * @throws JuegoException
 	 */
-	public void jugada(String jugada) throws JuegoException {
+	public void jugada(String jugada1) throws JuegoException {
 		Scanner teclado = new Scanner(System.in);
-		String jugada1 = "";
+		//String jugada1 = "";
 		Movimiento mov;
 		Posicion posInicial;
 		Posicion posFinal;
@@ -69,6 +70,10 @@ public class Juego {
 
 		Pieza pieza;
 		pieza = tablero.findEscaque(mov.getPosIni()).getPieza();
+		piezaColor = pieza.getColor();
+		if (tablero.findEscaque(mov.getPosFin()).hayPieza())
+			if(pieza.getColor() == tablero.findEscaque(mov.getPosFin()).getPieza().getColor())
+				System.out.println("No te puedes comer una pieza de tu color");
 		tablero.findEscaque(mov.getPosFin()).quitaPieza();
 		tablero.findEscaque(mov.getPosFin()).setPieza(pieza);
 

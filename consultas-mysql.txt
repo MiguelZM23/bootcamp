@@ -18,7 +18,7 @@ WHERE film.description LIKE '%Secret Agent%'
 
 /*Mostrar la lista de las películas mas caras (coste por minuto)*/
 
-SELECT film_id, title, 	'length', 'rental_rate',   (film.rental_rate/film.length) coste_por_minuto
+SELECT film_id, title, 	length, rental_rate,   (film.rental_rate/film.length) coste_por_minuto
 FROM film
 ORDER BY coste_por_minuto DESC
 
@@ -33,9 +33,9 @@ HAVING COUNT(payment.amount)<25 AND SUM(payment.amount) >100
 /*Obtener los 5 nombres de actor más repetidos (aprox).*/
 
 SELECT actor.first_name, COUNT(actor.first_name )
-FROM film, actor, film_actor WHERE film.film_id = film_actor.film_id
-AND actor.actor_id = film_actor.actor_id
-GROUP BY actor.first_name LIMIT 5 OFFSET 0
+FROM actor
+GROUP BY actor.first_name 
+LIMIT 5 
 
 /*Para felicitar el año nuevo chino se necesita el listado con los datos postales de los clientes residentes en China y Taiwan*/
 
@@ -94,7 +94,7 @@ ORDER BY time_passed DESC
 
 /*Elaborar el ranking de los países que más alquilan las películas de GINA DEGENERES.*/
 
-SELECT cou.country, COUNT(r.rental_id) AS rental_count
+SELECT RANK() over(ORDER BY COUNT(*) DESC) ranking, cou.country pais, COUNT(r.rental_id) AS rental_count
 
 FROM rental r
 INNER JOIN customer c ON r.customer_id = c.customer_id
@@ -106,7 +106,7 @@ INNER JOIN film_actor fa ON i.film_id = fa.film_id
 INNER JOIN actor ac ON fa.actor_id = ac.actor_id
 WHERE ac.first_name = 'GINA' AND ac.last_name = 'DEGENERES'
 GROUP BY cou.country
-ORDER BY rental_count DESC
+ORDER BY ranking, rental_count DESC
 
 
 
