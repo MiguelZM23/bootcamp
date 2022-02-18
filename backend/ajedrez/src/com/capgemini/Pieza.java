@@ -13,7 +13,7 @@ public abstract class Pieza {
 	}
 	
 	
-	boolean esValido(Movimiento mov, Tablero tablero) {
+	boolean esValido(Movimiento mov, Tablero tablero) throws JuegoException {
 		return false;
 	}
 	

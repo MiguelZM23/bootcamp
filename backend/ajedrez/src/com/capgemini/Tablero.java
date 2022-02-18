@@ -2,11 +2,12 @@ package com.capgemini;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class Tablero implements Cloneable {
-
+	
 	public ArrayList<Escaque> piezas = new ArrayList<Escaque>();
-	Escaque escaque;
+	Escaque escaque = new Escaque(1,1);
 	/**
 	 * Rellena el tablero con los escaques y las piezas.
 	 */
@@ -134,15 +135,36 @@ public class Tablero implements Cloneable {
 	 */
 	public Escaque findEscaque(int col, int fila) throws JuegoException {
 		Posicion pos = new Posicion(col, fila);
-		findEscaque(pos);
+		//findEscaque(pos);
 		return escaque;
 	}
 	
 	
 	
-	public Escaque findEscaque(Posicion pos) {
-		Escaque escaque = (Escaque) piezas.stream()
-				.filter(escaque1 -> escaque1.getPos() == pos);
+	public Escaque findEscaque(Posicion pos, Tablero tablero) throws JuegoException {
+		
+		
+		tablero.piezas.forEach(escaque1 -> {try {
+			if(escaque1.getPos().equals(pos)) escaque = escaque1;
+		} catch (JuegoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}});
+		return escaque;
+	}
+	public Escaque findEscaque(Posicion pos) throws JuegoException {
+		
+		
+		piezas.forEach(escaque1 -> {try {
+			if(escaque1.getPos().equals(pos)) escaque = escaque1;
+		} catch (JuegoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}});
+		
+		
+		//Stream<Escaque> escaque = piezas.stream()
+		//		.filter(escaque1 -> escaque1.getPos() == pos);
 		return escaque;
 	}
 
@@ -206,7 +228,7 @@ public class Tablero implements Cloneable {
 		}
 		return false;
 	}
-
+	
 	public ArrayList<Escaque> getPiezas() {
 		return piezas;
 	}

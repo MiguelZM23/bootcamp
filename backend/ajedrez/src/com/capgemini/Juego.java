@@ -19,12 +19,14 @@ public class Juego {
 
 	/**
 	 * Inicializa el juego
+	 * @throws JuegoException 
 	 */
-	public void inicializar() {
+	public void inicializar() throws JuegoException {
 
 		Tablero tablero = new Tablero();
 		tablero.rellenarTablero();
 		partidaActiva = true;
+		jugada("A2A3");
 	}
 	/**
 	 * Procesa la jugada
@@ -32,14 +34,14 @@ public class Juego {
 	 * @throws JuegoException
 	 */
 	public void jugada(String jugada1) throws JuegoException {
-		Scanner teclado = new Scanner(System.in);
-		//String jugada1 = "";
+		
+		
 		Movimiento mov;
 		Posicion posInicial;
 		Posicion posFinal;
 
 		while (partidaActiva) {
-			jugada1 = teclado.nextLine();
+			
 			mov = new Movimiento(jugada1);
 			Pieza pieza;
 			Escaque escaqueInicial = tablero.findEscaque(mov.getPosIni());
@@ -67,16 +69,13 @@ public class Juego {
 	 * @throws JuegoException
 	 */
 	public void mover(Movimiento mov) throws JuegoException {
-
 		Pieza pieza;
 		pieza = tablero.findEscaque(mov.getPosIni()).getPieza();
-		piezaColor = pieza.getColor();
-		if (tablero.findEscaque(mov.getPosFin()).hayPieza())
-			if(pieza.getColor() == tablero.findEscaque(mov.getPosFin()).getPieza().getColor())
-				System.out.println("No te puedes comer una pieza de tu color");
-		tablero.findEscaque(mov.getPosFin()).quitaPieza();
-		tablero.findEscaque(mov.getPosFin()).setPieza(pieza);
-
+		
+		if (pieza.esValido(mov, tablero)) {
+			tablero.findEscaque(mov.getPosFin()).quitaPieza();
+			tablero.findEscaque(mov.getPosFin()).setPieza(pieza);
+		}
 	}
 
 	/**

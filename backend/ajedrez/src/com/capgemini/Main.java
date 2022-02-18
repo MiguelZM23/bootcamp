@@ -7,7 +7,7 @@ package com.capgemini;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws JuegoException {
 		Main app = new Main();
 		app.run();
 		
@@ -16,7 +16,7 @@ public class Main {
 		
 	}
 
-	private void run() {
+	private void run() throws JuegoException {
 		// TODO Auto-generated method stub
 		Juego juego = new Juego();
 		juego.inicializar();

@@ -13,28 +13,45 @@ import com.capgemini.Tablero.Escaque;
 class TableroTest {
 	Tablero tablero;
 	Escaque escaque;
-	Escaque escaque2;
+	Juego juego;
+	Posicion pos;
 
 	@BeforeEach
 	void setUp() throws Exception {
+		juego = new Juego();
 		tablero = new Tablero();
 		tablero.rellenarTablero();
+		escaque = tablero.new Escaque(1,3);
+		pos = new Posicion(1,3);
 
 		Rey rey = new Rey(Color.BLANCO);
 
 	}
 
 	@Test
-	void test_hayPieza() {
-		assertFalse(escaque.hayPieza());
-		assertTrue(escaque2.hayPieza());
+	void test_hayPieza() throws JuegoException {
+		assertFalse(tablero.findEscaque(3,4).hayPieza());
+		assertTrue(tablero.findEscaque(1,2).hayPieza());
 	}
 
 	@Test
 	void test_tamaño_tablero() {
-		tablero.piezas.forEach((n) -> System.out.println(n.getPieza()));
+		//tablero.piezas.forEach((n) -> System.out.println(n.getPieza()));
 		assertEquals(64, tablero.piezas.size());
 
+	}
+	
+	@Test
+	void test_clone() throws CloneNotSupportedException {
+		Tablero tableroCopy = new Tablero();
+		tableroCopy = tablero.clone();
+		//tableroCopy.piezas.forEach((n) -> System.out.println(n.getPieza()));
+	}
+	
+	@Test
+	void test_findEscaque() throws JuegoException {
+			
+		assertEquals(escaque, tablero.findEscaque(pos, tablero));
 	}
 
 }
