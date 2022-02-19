@@ -19,29 +19,31 @@ public class Juego {
 
 	/**
 	 * Inicializa el juego
-	 * @throws JuegoException 
+	 * 
+	 * @throws JuegoException
 	 */
 	public void inicializar() throws JuegoException {
 
-		Tablero tablero = new Tablero();
+		tablero = new Tablero();
 		tablero.rellenarTablero();
 		partidaActiva = true;
 		jugada("A2A3");
 	}
+
 	/**
 	 * Procesa la jugada
+	 * 
 	 * @param jugada
 	 * @throws JuegoException
 	 */
 	public void jugada(String jugada1) throws JuegoException {
-		
-		
+
 		Movimiento mov;
 		Posicion posInicial;
 		Posicion posFinal;
 
 		while (partidaActiva) {
-			
+
 			mov = new Movimiento(jugada1);
 			Pieza pieza;
 			Escaque escaqueInicial = tablero.findEscaque(mov.getPosIni());
@@ -65,13 +67,14 @@ public class Juego {
 
 	/**
 	 * Mueve la pieza
+	 * 
 	 * @param mov
 	 * @throws JuegoException
 	 */
 	public void mover(Movimiento mov) throws JuegoException {
 		Pieza pieza;
 		pieza = tablero.findEscaque(mov.getPosIni()).getPieza();
-		
+
 		if (pieza.esValido(mov, tablero)) {
 			tablero.findEscaque(mov.getPosFin()).quitaPieza();
 			tablero.findEscaque(mov.getPosFin()).setPieza(pieza);
@@ -93,7 +96,7 @@ public class Juego {
 	public void promocionaPeon(Object o, PromocionEventArgs e) {
 
 	}
-	
+
 	public Tablero getTablero() throws CloneNotSupportedException {
 		return tablero.clone();
 	}

@@ -12,21 +12,20 @@ public class Rey extends Pieza {
 	 * @throws JuegoException 
 	 */
 	boolean esValido(Movimiento mov, Tablero tablero) throws JuegoException {
-		
+	
 		rey = new Rey(color);
-		
-		if(tablero.escaque.getPieza().equals(rey)) {
+		Color colorPiezaEscaque = tablero.findEscaque(mov.getPosFin()).getPieza().getColor();		
+		if(tablero.findEscaque(mov.getPosIni()).getPieza().getClass() == Rey.class) {
+			
+			if(rey.getColor() == colorPiezaEscaque)
+			{System.out.println("No te puedes comer una pieza de tu color");
+				return false;
+			}
 			
 			if(mov.saltoVertical() == 1 || mov.saltoHorizontal() == 1) return true; 
-			else System.out.println("La pieza no se mueve o movimiento incorrecto");
-		
-			
-			if(rey.getColor() == tablero.findEscaque(mov.getPosFin()).getPieza().getColor())
-				{System.out.println("No te puedes comer una pieza de tu color");
-					return false;
-				}
+			else System.out.println("La pieza no se mueve o movimiento incorrecto");	
 		}
-		
+		System.out.println(tablero.findEscaque(mov.getPosIni()).getPieza());
 		return false;
 	}
 }

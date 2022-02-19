@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 class ReyTest {
 	Movimiento mov;
+	Movimiento mov2;
 	Tablero tablero;
 	Posicion pos;
 	
@@ -21,6 +22,7 @@ class ReyTest {
 	//Quitamos el peon para que no nos de error
 	tablero.findEscaque(pos).quitaPieza();
 	mov = new Movimiento("D1D2");
+	mov2 = new Movimiento("D1D4");
 	}
 
 	@Test
@@ -28,6 +30,7 @@ class ReyTest {
 		Pieza pieza = null;
 		pieza = tablero.findEscaque(mov.getPosIni()).getPieza();
 		assertTrue(pieza.esValido(mov, tablero));
+		assertFalse(pieza.esValido(mov2, tablero));
 	}
 
 }

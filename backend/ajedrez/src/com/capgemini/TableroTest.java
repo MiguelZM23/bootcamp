@@ -18,11 +18,10 @@ class TableroTest {
 
 	@BeforeEach
 	void setUp() throws Exception {
-		juego = new Juego();
 		tablero = new Tablero();
 		tablero.rellenarTablero();
-		escaque = tablero.new Escaque(1,3);
-		pos = new Posicion(1,3);
+		escaque = tablero.piezas.get(0);
+		pos = new Posicion(1,1);
 
 		Rey rey = new Rey(Color.BLANCO);
 
@@ -35,8 +34,8 @@ class TableroTest {
 	}
 
 	@Test
-	void test_tamaño_tablero() {
-		//tablero.piezas.forEach((n) -> System.out.println(n.getPieza()));
+	void test_tamaño_tablero() throws JuegoException {
+		tablero.piezas.forEach((n) -> System.out.println(n.getPieza()));
 		assertEquals(64, tablero.piezas.size());
 
 	}
@@ -50,8 +49,10 @@ class TableroTest {
 	
 	@Test
 	void test_findEscaque() throws JuegoException {
-			
-		assertEquals(escaque, tablero.findEscaque(pos, tablero));
+		
+		assertTrue(escaque.getFila() == (tablero.findEscaque(pos).getFila()));
+		assertTrue(escaque.getCol() == (tablero.findEscaque(pos).getCol()));
+		assertTrue(escaque.getPieza().equals(tablero.findEscaque(pos).getPieza()));
 	}
 
 }
