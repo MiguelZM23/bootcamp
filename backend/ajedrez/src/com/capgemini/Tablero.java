@@ -30,9 +30,9 @@ public class Tablero implements Cloneable {
 					if (i == 3 && j == 1 || i == 6 && j == 1)
 						pieza = new Alfil(color);
 					if (i == 4 && j == 1)
-						pieza = new Rey(color);
-					if (i == 5 && j == 1)
 						pieza = new Dama(color);
+					if (i == 5 && j == 1)
+						pieza = new Rey(color);
 					if (i <= 8 && j == 2)
 						pieza = new Peon(color);
 
@@ -44,9 +44,9 @@ public class Tablero implements Cloneable {
 					if (i == 3 && j == 8 || i == 6 && j == 8)
 						pieza = new Alfil(color);
 					if (i == 4 && j == 8)
-						pieza = new Rey(color);
-					if (i == 5 && j == 8)
 						pieza = new Dama(color);
+					if (i == 5 && j == 8)
+						pieza = new Rey(color);
 					if (i <= 8 && j == 7)
 						pieza = new Peon(color);
 				} else

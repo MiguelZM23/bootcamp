@@ -10,13 +10,25 @@ public class Dama extends Pieza{
 	}
 	/**
 	 * Comprueba si el movimiento es válido.
+	 * @throws JuegoException 
 	 */
-	boolean esValido(Movimiento mov, Tablero tablero) {
-		dama = new Dama(color);
+	boolean esValido(Movimiento mov, Tablero tablero) throws JuegoException {
+		Color colorPiezaEscaque = Color.NEGRO;
+		Pieza pieza = tablero.findEscaque(mov.getPosFin()).getPieza();
+		dama = new Dama(this.color);
 
-		if (tablero.escaque.getPieza().equals(dama)) {
+		if (pieza != null)
+			colorPiezaEscaque = pieza.getColor();
 
-			if (mov.saltoVertical() >= 1 || mov.saltoHorizontal() >= 1 
+		if (tablero.findEscaque(mov.getPosIni()).getPieza().getClass() == Dama.class) {
+			
+			if (dama.getColor() == colorPiezaEscaque) {
+				System.out.println("No te puedes comer una pieza de tu color");
+				return false;
+			}
+						
+			if (mov.saltoVertical() >= 1 && mov.saltoHorizontal() ==0|| 
+					mov.saltoHorizontal() >= 1 && mov.saltoVertical() == 0
 					|| (mov.saltoVertical() ==  mov.saltoHorizontal() 
 					&& mov.saltoVertical() != 0 
 					&& mov.saltoHorizontal() !=0)) {

@@ -8,23 +8,21 @@ import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
-class ReyTest {
+class CaballoTest {
 	Movimiento mov;
 	Movimiento mov2;
 	Tablero tablero;
 	Posicion pos;
-
+	
 	@BeforeEach
 	void setUp() throws Exception {
 		pos = new Posicion(5, 2);
 		tablero = new Tablero();
-		tablero.rellenarTablero();
-		// Quitamos el peon para que no nos de error
-		tablero.findEscaque(pos).quitaPieza();
+		tablero.rellenarTablero();		
 		//Movimiento correcto
-		mov = new Movimiento("E1E2");
+		mov = new Movimiento("B1C3");
 		//Movimiento incorrecto
-		mov2 = new Movimiento("E1E4");
+		mov2 = new Movimiento("B1C4");
 	}
 
 	@Test

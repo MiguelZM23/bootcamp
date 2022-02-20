@@ -9,11 +9,22 @@ public class Peon extends Pieza{
 	}
 	/**
 	 * Comprueba si el movimiento es válido.
+	 * @throws JuegoException 
 	 */
-	boolean esValido(Movimiento mov, Tablero tablero) {
+	boolean esValido(Movimiento mov, Tablero tablero) throws JuegoException {
+		Color colorPiezaEscaque = Color.NEGRO;
+		Pieza pieza = tablero.findEscaque(mov.getPosFin()).getPieza();
 		peon = new Peon(color);
 		
-		if(tablero.escaque.getPieza().equals(peon)) {
+		if (pieza != null)
+			colorPiezaEscaque = pieza.getColor();
+
+		if (tablero.findEscaque(mov.getPosIni()).getPieza().getClass() == Peon.class) {
+			
+			if (peon.getColor() == colorPiezaEscaque) {
+				System.out.println("No te puedes comer una pieza de tu color");
+				return false;
+			}
 			
 			if(mov.saltoVertical() == 1 && mov.deltaFila() == 1 && peon.color == Color.BLANCO) return true; 
 			else if(mov.saltoVertical() == 1 && mov.deltaFila() == -1 && peon.color == Color.NEGRO) return true;
