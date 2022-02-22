@@ -29,6 +29,13 @@ public class Main {
 	 * @throws IOException 
 	 */
 	public static void main(String[] args) throws IOException {
+		int x = 5;
+
+		double y = 5;
+
+		y *= x++;
+
+		System.out.println(x);
 		Main app = new Main();
 		app.run();
 		String respuesta;
@@ -63,7 +70,7 @@ public class Main {
 		} else if (respuesta.equals("2")) {
 
 			DecodificarCadenas decodificar = new DecodificarCadenas();
-			decodificar.inicializar();
+			//decodificar.inicializar();
 
 		}else if(respuesta.equals("3")) {
 			JuegoNaipes juego = new JuegoNaipes();

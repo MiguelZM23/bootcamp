@@ -18,6 +18,8 @@ public class Main {
 
 	private void run() throws JuegoException {
 		// TODO Auto-generated method stub
+		
+		
 		Juego juego = new Juego();
 		juego.inicializar();
 	}
