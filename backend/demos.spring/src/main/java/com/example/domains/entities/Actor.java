@@ -2,7 +2,12 @@ package com.example.domains.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import org.hibernate.annotations.Generated;
+import org.hibernate.annotations.GenerationTime;
+
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -29,14 +34,42 @@ public class Actor implements Serializable {
 	private String lastName;
 
 	@Column(name="last_update")
+	@Generated(value = GenerationTime.ALWAYS)
 	private Timestamp lastUpdate;
 
 	//bi-directional many-to-one association to FilmActor
-	@OneToMany(mappedBy="actor")
-	private List<FilmActor> filmActors;
+	@OneToMany(mappedBy="actor", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<FilmActor> filmActors = new ArrayList<>();
 
 	public Actor() {
 	}
+
+	public Actor(int actorId) {
+		super();
+		this.actorId = actorId;
+	}
+
+	public Actor(String firstName, String lastName) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+	}
+	
+	public Actor(int actorId, String firstName, String lastName) {
+		super();
+		this.actorId = actorId;
+		this.firstName = firstName;
+		this.lastName = lastName;
+	}
+	
+	public Actor(int actorId, String firstName, String lastName, Timestamp lastUpdate) {
+		super();
+		this.actorId = actorId;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.lastUpdate = lastUpdate;
+	}
+
 
 	public int getActorId() {
 		return this.actorId;
@@ -84,6 +117,12 @@ public class Actor implements Serializable {
 
 		return filmActor;
 	}
+	public FilmActor addFilmActor(int filmId) {
+		var peli = new Film(filmId);
+		var filmActor = new FilmActor(this, peli);
+		getFilmActors().add(filmActor);
+		return filmActor;
+	}
 
 	public FilmActor removeFilmActor(FilmActor filmActor) {
 		getFilmActors().remove(filmActor);
@@ -94,7 +133,7 @@ public class Actor implements Serializable {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(actorId, filmActors, firstName, lastName, lastUpdate);
+		return Objects.hash(actorId);
 	}
 
 	@Override
@@ -106,10 +145,13 @@ public class Actor implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Actor other = (Actor) obj;
-		return actorId == other.actorId && Objects.equals(filmActors, other.filmActors)
-				&& Objects.equals(firstName, other.firstName) && Objects.equals(lastName, other.lastName)
-				&& Objects.equals(lastUpdate, other.lastUpdate);
+		return actorId == other.actorId;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Actor [actorId=" + actorId + ", firstName=" + firstName + ", lastName=" + lastName + ", lastUpdate="
+				+ lastUpdate + "]";
+	}
 
 }
