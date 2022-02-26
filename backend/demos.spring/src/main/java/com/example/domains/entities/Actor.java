@@ -11,9 +11,6 @@ import org.hibernate.annotations.GenerationTime;
 import org.hibernate.validator.constraints.Length;
 
 import com.example.domains.core.entities.EntityBase;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
