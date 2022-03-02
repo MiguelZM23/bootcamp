@@ -2,28 +2,28 @@ package com.example.domains.services;
 
 import java.util.List;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
 
 import com.example.domains.contracts.repositories.CategoryRepository;
+import com.example.domains.contracts.services.CategoryService;
 import com.example.domains.entities.Category;
 import com.example.exceptions.DuplicateKeyException;
 import com.example.exceptions.InvalidDataException;
 import com.example.exceptions.NotFoundException;
 
-public class CategoryServiceImpl {
-private CategoryRepository dao;
+@Service
+public class CategoryServiceImpl implements CategoryService {
+	private CategoryRepository dao;
 	
 	public CategoryServiceImpl(CategoryRepository dao) {
 		this.dao = dao;
 	}
 	
 	@Override
-	public <T> Page<T> getByProjection(Pageable pageable, Class<T> type) {
-		return dao.findByCategoryIdIsNotNull(pageable, type);
+	public List<Category> getAll() {
+		return dao.findAll();
 	}
-
+	
 	@Override
 	public Category getOne(Integer id) throws NotFoundException {
 		var item = dao.findById(id);

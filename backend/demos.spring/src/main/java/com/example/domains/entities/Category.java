@@ -8,8 +8,10 @@ import org.hibernate.annotations.Generated;
 import org.hibernate.annotations.GenerationTime;
 import org.hibernate.validator.constraints.Length;
 
-
 import com.example.domains.core.entities.EntityBase;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -34,17 +36,31 @@ public class Category extends EntityBase<Category> implements Serializable {
 
 	@Column(name="last_update")
 	@Generated(value = GenerationTime.ALWAYS)
+	@JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
 	private Timestamp lastUpdate;
 
 	@NotBlank
 	@Length(max = 25)
+	@JsonProperty("categoria")
 	private String name;
 
 	//bi-directional many-to-one association to FilmCategory
 	@OneToMany(mappedBy="category")
+	@JsonIgnore
 	private List<FilmCategory> filmCategories;
 
 	public Category() {
+	}
+
+	public Category(int categoryId) {
+		super();
+		this.categoryId = categoryId;
+	}
+
+	public Category(int categoryId, String name) {
+		super();
+		this.categoryId = categoryId;
+		this.name = name;
 	}
 
 	public int getCategoryId() {
@@ -93,17 +109,6 @@ public class Category extends EntityBase<Category> implements Serializable {
 		return filmCategory;
 	}
 
-	public Category(int categoryId) {
-		super();
-		this.categoryId = categoryId;
-	}
-
-	public Category(int categoryId, String name) {
-		super();
-		this.categoryId = categoryId;
-		this.name = name;
-	}
-
 	@Override
 	public int hashCode() {
 		return Objects.hash(categoryId);
@@ -113,13 +118,11 @@ public class Category extends EntityBase<Category> implements Serializable {
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
+		if (!(obj instanceof Category))
 			return false;
 		Category other = (Category) obj;
 		return categoryId == other.categoryId;
 	}
-	
 
+	
 }

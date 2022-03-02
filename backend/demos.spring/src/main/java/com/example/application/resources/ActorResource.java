@@ -3,13 +3,11 @@ package com.example.application.resources;
 import java.net.URI;
 import java.util.List;
 
-import javax.validation.ConstraintViolation;
 import javax.validation.Valid;
-import javax.validation.Validator;
-import javax.websocket.server.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,6 +40,11 @@ public class ActorResource {
 		return srv.getByProjection(ActorDTO.class);
 	}
 
+	@GetMapping(params = "page")
+	public Page<ActorDTO> getAll(Pageable page) {
+		return srv.getByProjection(page, ActorDTO.class);
+	}
+
 	@GetMapping(path = "/{id}")
 	public ActorDTO getOne(@PathVariable int id) throws NotFoundException {
 		return ActorDTO.from(srv.getOne(id));
@@ -63,7 +66,7 @@ public class ActorResource {
 	@ResponseStatus(HttpStatus.ACCEPTED)
 	public void update(@PathVariable int id, @Valid @RequestBody ActorDTO item) throws InvalidDataException, NotFoundException {
 		if(id != item.getActorId())
-			throw new InvalidDataException("No coinciden los identificadore");
+			throw new InvalidDataException("No coinciden los identificadores");
 		Actor actor = ActorDTO.from(item);
 		if(actor.isInvalid())
 			throw new InvalidDataException(actor.getErrorsMessage());
