@@ -1,10 +1,20 @@
 package com.example.domains.entities;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.PastOrPresent;
+
+import com.example.domains.core.entities.EntityBase;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.Date;
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.Objects;
 
 
 /**
@@ -14,7 +24,7 @@ import java.util.List;
 @Entity
 @Table(name="rental")
 @NamedQuery(name="Rental.findAll", query="SELECT r FROM Rental r")
-public class Rental implements Serializable {
+public class Rental extends EntityBase<Rental> implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -22,35 +32,41 @@ public class Rental implements Serializable {
 	@Column(name="rental_id")
 	private int rentalId;
 
-	@Column(name="last_update")
-	private Timestamp lastUpdate;
-
+	@NotBlank
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="rental_date")
 	private Date rentalDate;
-
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="return_date")
-	private Date returnDate;
-
-	//bi-directional many-to-one association to Payment
-	@OneToMany(mappedBy="rental")
-	private List<Payment> payments;
-
-	//bi-directional many-to-one association to Customer
-	@ManyToOne
-	@JoinColumn(name="customer_id")
-	private Customer customer;
-
+	
 	//bi-directional many-to-one association to Inventory
 	@ManyToOne
 	@JoinColumn(name="inventory_id")
 	private Inventory inventory;
-
-	//bi-directional many-to-one association to Staff
+	
+	//bi-directional many-to-one association to Customer
 	@ManyToOne
-	@JoinColumn(name="staff_id")
-	private Staff staff;
+	@JoinColumn(name="customer_id")
+	private Customer customer;
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name="return_date")
+	private Date returnDate;
+	
+	//bi-directional many-to-one association to Staff
+		@ManyToOne
+		@JoinColumn(name="staff_id")
+		private Staff staff;
+	
+	@Column(name = "last_update")
+	//@Generated(value = GenerationTime.ALWAYS)
+	@PastOrPresent
+	@JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
+	private Timestamp lastUpdate;
+
+	//bi-directional many-to-one association to Payment
+	@OneToMany(mappedBy="rental", cascade = CascadeType.ALL, orphanRemoval = true)
+	@Valid
+	@JsonIgnore
+	private List<Payment> payments;
 
 	public Rental() {
 	}
@@ -132,5 +148,32 @@ public class Rental implements Serializable {
 	public void setStaff(Staff staff) {
 		this.staff = staff;
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(rentalId);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!(obj instanceof Rental))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Rental other = (Rental) obj;
+		return rentalId == other.rentalId;
+	}
+
+	@Override
+	public String toString() {
+		return "Rental [rentalId=" + rentalId + ", rentalDate=" + rentalDate + ", inventory=" + inventory
+				+ ", customer=" + customer + ", returnDate=" + returnDate + ", staff=" + staff + ", lastUpdate="
+				+ lastUpdate + ", payments=" + payments + "]";
+	}
+	
+	
+	
 
 }
