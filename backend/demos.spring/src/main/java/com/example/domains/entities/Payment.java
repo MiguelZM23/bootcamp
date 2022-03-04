@@ -3,6 +3,7 @@ package com.example.domains.entities;
 import java.io.Serializable;
 
 import javax.persistence.*;
+import javax.validation.Valid;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
@@ -47,6 +48,7 @@ public class Payment extends EntityBase<Payment> implements Serializable {
 	//bi-directional many-to-one association to Rental
 	@ManyToOne
 	@JoinColumn(name="rental_id")
+	@JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
 	private Rental rental;
 	
 	@NotNull
@@ -69,6 +71,31 @@ public class Payment extends EntityBase<Payment> implements Serializable {
 	public Payment() {
 	}
 
+	public Payment(int paymentId2, BigDecimal amount2, Date paymentDate, Customer customer, @Valid Rental rental, Staff staff2) {
+		super();
+		this.paymentId = paymentId2;
+		this.amount = amount2;
+		this.paymentDate = paymentDate;
+		this.customer = customer;
+		this.rental = rental;
+		this.staff = staff2;
+		
+	}
+
+	public Payment(int paymentId,
+			@NotNull @DecimalMin(value = "0.0", inclusive = false) @Digits(integer = 5, fraction = 2) BigDecimal amount,
+			@PastOrPresent @NotNull Date paymentDate, @NotNull Staff staff, @NotNull Rental rental ) {
+		super();
+		this.paymentId = paymentId;
+		this.amount = amount;
+		this.paymentDate = paymentDate;
+		this.staff = staff;
+		this.rental = rental;
+		
+		if(rental != null) {
+			this.customer = rental.getCustomer();
+		}
+	}
 	public int getPaymentId() {
 		return this.paymentId;
 	}

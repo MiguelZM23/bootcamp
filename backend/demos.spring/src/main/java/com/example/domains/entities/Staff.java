@@ -66,6 +66,10 @@ public class Staff implements Serializable {
 	public Staff() {
 	}
 
+	public Staff(int staffId2) {
+		// TODO Auto-generated constructor stub
+	}
+
 	public byte getStaffId() {
 		return this.staffId;
 	}

@@ -32,7 +32,7 @@ public class Rental extends EntityBase<Rental> implements Serializable {
 	@Column(name="rental_id")
 	private int rentalId;
 
-	@NotBlank
+	
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="rental_date")
 	private Date rentalDate;
@@ -69,6 +69,11 @@ public class Rental extends EntityBase<Rental> implements Serializable {
 	private List<Payment> payments;
 
 	public Rental() {
+	}
+
+	public Rental(int rentalId2, Date rentalDate2, Date returnDate2, Inventory inventory2, Customer customer2,
+			Staff staff2, Object object) {
+		// TODO Auto-generated constructor stub
 	}
 
 	public int getRentalId() {

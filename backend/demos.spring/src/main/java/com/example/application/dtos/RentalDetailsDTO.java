@@ -24,11 +24,9 @@ public class RentalDetailsDTO {
 	private String empleado;
 	@JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
 	private Date returnDate;
-	private List<BigDecimal> payments;
+	private List<PaymentShortDTO> payments;
 	
 	
-	
-	@SuppressWarnings("unchecked")
 	public static RentalDetailsDTO from(Rental source) {
 		return new RentalDetailsDTO(
 				source.getRentalId(),
@@ -37,7 +35,9 @@ public class RentalDetailsDTO {
 				source.getInventory().getFilm().getTitle(),
 				source.getStaff().getFirstName()+ " " + source.getStaff().getLastName(),
 				source.getReturnDate(),
-				source.getPayments().stream().map(item -> item.getAmount()).sorted().toList());  
+				source.getPayments().stream().map(pago -> PaymentShortDTO.from(pago)).toList()
+				);
+				  
 				
 	}
 

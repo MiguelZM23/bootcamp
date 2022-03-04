@@ -3,6 +3,7 @@ package com.example.application.resources;
 import java.net.URI;
 import java.util.List;
 
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,10 +62,11 @@ public class RentalResource {
 	}
 	
 	
-	/*
+	
 	@PostMapping
-	public ResponseEntity<Object> create(@Valid @RequestBody RentalDTO item) throws InvalidDataException, DuplicateKeyException {
-		Rental Rental = RentalDTO.from(item);
+	@Transactional
+	public ResponseEntity<Object> create(@Valid @RequestBody RentalEditDTO item) throws InvalidDataException, DuplicateKeyException {
+		Rental Rental = RentalEditDTO.from(item);
 		if(Rental.isInvalid())
 			throw new InvalidDataException(Rental.getErrorsMessage());
 		Rental = srv.add(Rental);
@@ -73,6 +75,7 @@ public class RentalResource {
 		return ResponseEntity.created(location).build();
 
 	}
+	/*
 
 	@PutMapping("/{id}")
 	@ResponseStatus(HttpStatus.ACCEPTED)

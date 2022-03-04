@@ -60,6 +60,10 @@ public class Customer implements Serializable {
 	public Customer() {
 	}
 
+	public Customer(int customerId2) {
+		// TODO Auto-generated constructor stub
+	}
+
 	public int getCustomerId() {
 		return this.customerId;
 	}
