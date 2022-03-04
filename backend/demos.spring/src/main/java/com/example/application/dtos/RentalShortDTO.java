@@ -13,6 +13,8 @@ public class RentalShortDTO {
 	private int rentalId;
 	@JsonProperty("Fecha_devolucion")
 	private Date rentalDate;
+	@JsonProperty("Cliente")
+	private String customer;
 	@JsonProperty("titulo_pelicula")
 	private String tituloPelicula;
 	
@@ -20,6 +22,7 @@ public class RentalShortDTO {
 		return new RentalShortDTO(
 				source.getRentalId(),
 				source.getRentalDate(),
+				source.getCustomer().getFirstName() + " " + source.getCustomer().getLastName(),
 				source.getInventory().getFilm().getTitle()
 				);
 	}

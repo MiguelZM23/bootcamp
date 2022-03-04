@@ -9,6 +9,9 @@ import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PastOrPresent;
 
+import org.hibernate.annotations.Generated;
+import org.hibernate.annotations.GenerationTime;
+
 import com.example.domains.core.entities.EntityBase;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -49,6 +52,7 @@ public class Payment extends EntityBase<Payment> implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="rental_id")
 	@JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
+	@NotNull
 	private Rental rental;
 	
 	@NotNull
@@ -63,23 +67,35 @@ public class Payment extends EntityBase<Payment> implements Serializable {
 	private Date paymentDate;
 
 	@Column(name="last_update")
-	@PastOrPresent
 	@JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
-	//@Generated(value = GenerationTime.ALWAYS)
+	@Generated(value = GenerationTime.ALWAYS)
 	private Timestamp lastUpdate;
 	
 	public Payment() {
 	}
 
-	public Payment(int paymentId2, BigDecimal amount2, Date paymentDate, Customer customer, @Valid Rental rental, Staff staff2) {
+	public Payment(int paymentId) {
 		super();
-		this.paymentId = paymentId2;
-		this.amount = amount2;
+		this.paymentId = paymentId;
+	}
+
+	public Payment(int paymentId, Customer customer, @Valid Rental rental) {
+		super();
+		this.paymentId = paymentId;
+		this.customer = customer;
+		this.rental = rental;
+	}
+
+	public Payment(int paymentId, BigDecimal amount, @PastOrPresent Timestamp lastUpdate, Date paymentDate,
+			Customer customer, @Valid Rental rental, Staff staff) {
+		super();
+		this.paymentId = paymentId;
+		this.amount = amount;
+		this.lastUpdate = lastUpdate;
 		this.paymentDate = paymentDate;
 		this.customer = customer;
 		this.rental = rental;
-		this.staff = staff2;
-		
+		this.staff = staff;
 	}
 
 	public Payment(int paymentId,
@@ -95,7 +111,9 @@ public class Payment extends EntityBase<Payment> implements Serializable {
 		if(rental != null) {
 			this.customer = rental.getCustomer();
 		}
+		
 	}
+	
 	public int getPaymentId() {
 		return this.paymentId;
 	}

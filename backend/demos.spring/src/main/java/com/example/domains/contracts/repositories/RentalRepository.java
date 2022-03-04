@@ -12,9 +12,7 @@ import com.example.domains.entities.Rental;
 
 @RepositoryRestResource(exported = false)
 public interface RentalRepository extends JpaRepository<Rental, Integer> {
-	//List<Rental> findByFirstName(String nombre);
-	//List<Rental> findByFirstNameStartingWithAndLastNameEndingWith(String prefijo, String sufijo);
-
+	
 	<T> List<T> findByRentalIdIsNotNull(Class<T> type);
 	<T> Iterable<T> findByRentalIdIsNotNull(Sort sort, Class<T> type);
 	<T> Page<T> findByRentalIdIsNotNull(Pageable pageable, Class<T> type);

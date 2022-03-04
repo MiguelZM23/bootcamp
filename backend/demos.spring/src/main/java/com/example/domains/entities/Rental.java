@@ -7,6 +7,10 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.PastOrPresent;
 
+import org.hibernate.annotations.Generated;
+import org.hibernate.annotations.GenerationTime;
+import org.springframework.lang.NonNull;
+
 import com.example.domains.core.entities.EntityBase;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -34,6 +38,7 @@ public class Rental extends EntityBase<Rental> implements Serializable {
 
 	
 	@Temporal(TemporalType.TIMESTAMP)
+	@NonNull
 	@Column(name="rental_date")
 	private Date rentalDate;
 	
@@ -57,25 +62,42 @@ public class Rental extends EntityBase<Rental> implements Serializable {
 		private Staff staff;
 	
 	@Column(name = "last_update")
-	//@Generated(value = GenerationTime.ALWAYS)
+	@Generated(value = GenerationTime.ALWAYS)
 	@PastOrPresent
 	@JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
 	private Timestamp lastUpdate;
 
 	//bi-directional many-to-one association to Payment
 	@OneToMany(mappedBy="rental", cascade = CascadeType.ALL, orphanRemoval = true)
-	@Valid
-	@JsonIgnore
+	@Valid//Validamos que el alquiler es válido
 	private List<Payment> payments;
 
 	public Rental() {
 	}
 
-	public Rental(int rentalId2, Date rentalDate2, Date returnDate2, Inventory inventory2, Customer customer2,
-			Staff staff2, Object object) {
-		// TODO Auto-generated constructor stub
+	public Rental(int rentalId) {
+		super();
+		this.rentalId = rentalId;
 	}
 
+	public Rental(int rentalId, @Valid List<Payment> payments, Customer customer) {
+		super();
+		this.rentalId = rentalId;
+		this.payments = payments;
+		this.customer = customer;
+	}
+
+	public Rental(int rentalId, Date rentalDate, Date returnDate,
+			Inventory inventory, Customer customer,  Staff staff) {
+		super();
+		this.rentalId = rentalId;
+		this.rentalDate = rentalDate;
+		this.returnDate = returnDate;
+		this.customer = customer;
+		this.inventory = inventory;
+		this.staff = staff;
+	}
+	
 	public int getRentalId() {
 		return this.rentalId;
 	}
