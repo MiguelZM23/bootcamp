@@ -2,6 +2,7 @@ package com.example;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
 
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -17,6 +18,7 @@ import javax.transaction.Transactional;
 import org.springframework.boot.CommandLineRunner;
 
 @EnableOpenApi
+@EnableEurekaClient
 @SpringBootApplication
 public class Application implements CommandLineRunner { 
 
@@ -24,6 +26,8 @@ public class Application implements CommandLineRunner {
 		SpringApplication.run(Application.class, args);
 	}
 
+	
+	
 	@Bean
 	public Docket api() {                
    	    return new Docket(DocumentationType.OAS_30)          
