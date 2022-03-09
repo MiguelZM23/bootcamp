@@ -2,7 +2,25 @@ body {
   background-color: black;
 }
 h1 {
-  color: white;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
+}
+
+.navbar-brand{
+    font-weight: bold;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+nav{
+    background-color: black;
+}
+
+.linknavbar{
+    color: white;
+    border: black;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin: 10px;
+    font-size: large;
+    font-style: italic;
 }
