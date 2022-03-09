@@ -38,7 +38,6 @@ public class Rental extends EntityBase<Rental> implements Serializable {
 
 	
 	@Temporal(TemporalType.TIMESTAMP)
-	@NonNull
 	@Column(name="rental_date")
 	private Date rentalDate;
 	
