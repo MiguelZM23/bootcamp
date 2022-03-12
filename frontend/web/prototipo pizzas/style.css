@@ -33,11 +33,11 @@ Barras de navegación
   justify-content: flex-start;
 }
 
-#separator {
+.separator {
   display: flex;
   flex-grow: 1;
 }
-#menu-icon {
+.nav-icon {
   text-decoration: none;
   color: white;
   font-size: 32px;
@@ -113,6 +113,40 @@ Slider con imagen y textos
 Fin slider con imagen y textos
 **/
 
+/**
+Botones
+**/
+.card-circle{
+  margin-top: -2em;
+  margin-left: 8em;
+  border-radius: 100%;
+  height: 2em;
+  width: 2em;
+  background-color: var(--color-red);
+  align-items: center;
+  text-align: center;
+}
+.cart-button{
+  font-size: larger;
+  text-align: center;
+  z-index: 1;
+  vertical-align: center;
+}
+
+
+
+
+
+/**
+Fin Botones
+*/
+
+.flex-display{
+  display:flex;
+}
+
+
+
 h2{
     font-size: 1.9em;
     color:var(--color-light);
@@ -120,7 +154,7 @@ h2{
 .card-title{
   width: 30%;
   border-radius: 10px;
-  background-color: rgba(255, 71, 71, 0.9);
+  background-color: rgba(255, 71, 71, 1);
   align-items: center;
   text-align: center;
   margin-left: 2px;
@@ -137,6 +171,7 @@ h2{
 
 .product-img{
     height: 10em;
+    width: auto;
 }
 
 footer{
@@ -162,3 +197,17 @@ li{
 .container-text{
     margin-top: 1em;
 }
+.icon{
+  height: 3em;
+  margin-left: 1em;
+}
+
+
+
+
+
+
+/**************************
+*******Html de Carta*******
+***************************/
+
