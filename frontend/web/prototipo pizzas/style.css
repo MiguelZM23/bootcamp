@@ -402,7 +402,7 @@ h2{
 /******
 ***** Pantallas grandes *****
 ********/
-@media only screen and (min-width: 1080px){
+@media all and (min-width: 1080px){
   .container-pizzas{
     display: flex;
     flex-direction: row;
