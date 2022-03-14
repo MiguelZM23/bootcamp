@@ -144,6 +144,11 @@ Fin Botones
 .flex-display{
   display:flex;
 }
+.flex-col{
+  display: flex;
+  flex-direction: column;
+}
+
 
 
 
@@ -207,7 +212,36 @@ li{
 
 
 
-/**************************
-*******Html de Carta*******
-***************************/
 
+
+/**************************
+*******Html de Formulario de usuario*******
+***************************/
+#sectionForm{
+  width: 90%;
+  margin: 1em;
+}
+input{
+  margin-left: 1em;
+  margin-right: 1em;
+  height: 3em;
+  border-radius: 15px;
+
+}
+label{
+  margin-left: 1em;
+}
+
+.button{
+  margin-top: 1em;
+  margin-left: 1em;
+  padding: 0.7em;
+  color: white;
+  border-radius: 15px;
+  background-color: var(--color-medium-dark);
+}
+
+
+/**************************
+*******Html de Formulario de usuario*******
+***************************/
