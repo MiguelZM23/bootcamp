@@ -13,10 +13,12 @@
     <header>
         <nav class="navbar">
             <a class="nav-icon" href="#">☰ </a>
-            <a href="#"><img id="logo" src="img\logo1.png" alt="logo pizzaXpress"></a>
+            <a href="index.html"><img id="logo" src="img\logo1.png" alt="logo pizzaXpress"></a>
+            <a class="link-navbar" href="carta.html">Carta</a>
+            <a class="link-navbar" href="#">Pedidos</a>
             <div class="separator"></div>
-            <a class="nav-icon" href="#">🛒</a>
-            <a class="nav-icon" href="#">👤</a>
+            <a class="nav-icon2" href="#">🛒</a>
+            <a class="nav-icon2" href="formulario-cliente.html">👤</a>
         </nav>
         
         <nav id="navbar-mobile">
@@ -28,24 +30,26 @@
         
     </header>
     <section>
-        <article>
+        <article class="container-form">
             <div id="sectionForm" class="card-title">
                 <h2>Formulario de alta de usuario</h2>
             </div>
-            <form class="flex-col" action="POST">
+            <form class="flex-col" action=""onsubmit="return validateForm()" method="post">
                 <label for="nombre">Nombre:</label>
-                <input title="nombre" id="nombre" name="nombre" type="text">
+                <input title="nombre" id="nombre" name="nombre" type="text" required>
                 <label for="apellidos">Apellidos:</label>
-                <input title="apellidos" id="apellidos" name="apellidos" type="text">
+                <input title="apellidos" id="apellidos" name="apellidos" type="text" required>
                 <label for="email">Email:</label>
-                <input title="email" id="email" name="email" type="email">
+                <input title="email" id="email" name="email" type="email" required>
                 <label for="telefono">Telefono</label>
                 <input title="telefono" id="telefono" name="telefono" type="tel">
-                <label for="fecha_nacimiento" id="fecha_nacimiento" name="fecha_nacimiento">Fecha de nacimiento</label>
-                <input title="fecha_nacimiento" type="date">  
+                <label for="fecha_nacimiento" id="fecha_nacimiento" name="fecha_nacimiento" required>Fecha de nacimiento</label>
+                <input title="fecha_nacimiento" type="date" required>  
+                <input class="button" type="submit" value="Enviar">
+                <input class="button" type="submit" value="Cancelar"> 
             </form>
-            <button class="button"> Enviar </button>
-            <button class="button"> Cancelar </button>
+            
+            
             
     </article>
 </section>       

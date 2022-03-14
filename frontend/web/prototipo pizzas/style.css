@@ -41,6 +41,15 @@ Barras de navegación
   color: white;
   font-size: 32px;
 }
+.nav-icon2 {
+  text-decoration: none;
+  color: white;
+  font-size: 32px;
+}
+.link-navbar{
+  display: none;
+}
+
 #navbar-mobile{
   display: none;
 }
@@ -171,6 +180,7 @@ Fin Botones
 .title-price{
   justify-content: space-between;
   width: 50%;
+  max-width: 11em;
 }
 .flex-display{
   display:flex;
@@ -300,3 +310,163 @@ label{
 /**************************
 *******Html de Formulario de usuario*******
 ***************************/
+
+/******
+***** Pantallas intermedias *****
+********/
+
+
+@media only screen and (min-width: 600px){
+
+.container-pizzas{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.container-product{
+  display: flex;
+  margin-top: 1em;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+}
+
+.nav-icon{
+  display: none;
+}
+.link-navbar{
+  display: flex;
+  text-decoration: none;
+  color: white;
+  margin-left: 1em;
+  font-size:larger;
+}
+
+.card-glass {
+  position: absolute;
+  margin-top: 5em;
+  width: 25%;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.2);
+  align-items: center;
+  text-align: center;
+  margin-left: 2px;
+}
+
+.over-text {
+  font-size: 2.6em;
+  color: var(--color-light);
+}
+
+#super-title {
+  position: absolute;
+  top: 40%;
+  align-self: center;
+  width: 70%;
+  height: 2.9em;
+  background-color: rgba(255, 71, 71, 0.8);
+}
+
+#container-footer{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 6em;
+  margin-right: 0.2em;
+}
+#container-social{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top:1em;
+  height: 8em;
+}
+.container-form{
+  
+  margin-left: 10em;
+  max-width: 50%;
+}
+.nav-icon2{
+  font-size: 1.4em;
+}
+h2{
+  font-size: 2.4em;
+}
+/******
+***** Fin Pantallas intermedias *****
+********/
+
+/******
+***** Pantallas grandes *****
+********/
+@media only screen and (min-width: 1080px){
+  .container-pizzas{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.container-product{
+  display: flex;
+  margin-top: 1em;
+  flex-direction: column;
+  align-items: stretch;
+  width: 30%;
+}
+  .card-glass {
+    position: absolute;
+    margin-top: 5em;
+    width: 25%;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.2);
+    align-items: center;
+    text-align: center;
+    margin-left: 1em;
+  }
+  
+  .over-text {
+    font-size: 4.6em;
+    color: var(--color-light);
+  }
+  
+  #super-title {
+    position: absolute;
+    top: 40%;
+    align-self: center;
+    width: 70%;
+    height: 5.2em;
+    background-color: rgba(255, 71, 71, 0.8);
+  }
+
+  .nav-icon{
+    display: none;
+  }
+  .link-navbar{
+    display: flex;
+    text-decoration: none;
+    color: white;
+    margin-left: 1em;
+    font-size:xx-large;
+  }
+  #logo{
+    height: 3.9em;
+  }
+
+  .navbar{
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+  }
+
+}
+.nav-icon2{
+  font-size: 3em;
+}
+h2{
+  font-size: 3em;
+}
+
+}
