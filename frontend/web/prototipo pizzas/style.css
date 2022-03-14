@@ -20,17 +20,16 @@
 }
 body {
   background-color: var(--color-light);
+  width: auto;
 }
 /**
 Barras de navegación
 **/
 .navbar {
   display: flex;
-  flex-direction: row;
   background-color: var(--color-red);
   height: 3.5em;
   align-items: center;
-  justify-content: flex-start;
 }
 
 .separator {
@@ -41,6 +40,9 @@ Barras de navegación
   text-decoration: none;
   color: white;
   font-size: 32px;
+}
+#navbar-mobile{
+  display: none;
 }
 
 #navbar-mobile:hover {
@@ -53,6 +55,31 @@ Barras de navegación
   z-index: 5;
   border-radius: 10px;
   background-color: var(--color-red);
+}
+
+#login-screen{
+  display: none;
+}
+
+#login-screen:hover {
+  display: flex;
+  flex-direction: column;
+  position: flex;
+  height: 20em;
+  width: 37%;
+  margin-top: -21em;
+  margin-left: 15em;
+  z-index: 6;
+  border-radius: 10px;
+  background-color: var(--color-red);
+}
+
+.input-access{
+  height: 1.5em;
+}
+.text-access{
+  margin-top: 1em;
+  color: white;
 }
 
 .link {
@@ -97,6 +124,7 @@ Slider con imagen y textos
 }
 
 .over-text {
+  font-size: 1.6em;
   color: var(--color-light);
 }
 
@@ -140,7 +168,10 @@ Botones
 /**
 Fin Botones
 */
-
+.title-price{
+  justify-content: space-between;
+  width: 50%;
+}
 .flex-display{
   display:flex;
 }
@@ -163,15 +194,21 @@ h2{
   align-items: center;
   text-align: center;
   margin-left: 2px;
+  margin-top: 1em;
 }
 
 .container-pizzas{
     display: flex;
+    flex-direction: column;
     justify-content: center;
 }
 
 .container-product{
-    margin: 5%;
+  display: flex;
+  margin-top: 1em;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
 .product-img{
@@ -185,10 +222,10 @@ footer{
 }
 #container-footer{
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
     margin-top: 6em;
-    margin-left: 0.2em;
     margin-right: 0.2em;
 }
 li{ 
@@ -197,30 +234,22 @@ li{
 }
 #container-social{
     margin-top:1em;
+    margin-left: 0.4em;
     height: 8em;
 }
 .container-text{
     margin-top: 1em;
+    margin-left: 0.4em;
 }
 .icon{
   height: 3em;
   margin-left: 1em;
 }
 
+/**
+Formularios
+**/
 
-
-
-
-
-
-
-/**************************
-*******Html de Formulario de usuario*******
-***************************/
-#sectionForm{
-  width: 90%;
-  margin: 1em;
-}
 input{
   margin-left: 1em;
   margin-right: 1em;
@@ -236,12 +265,38 @@ label{
   margin-top: 1em;
   margin-left: 1em;
   padding: 0.7em;
+  font-weight: bold;
+  font-size: large;
   color: white;
   border-radius: 15px;
   background-color: var(--color-medium-dark);
 }
 
 
+
+
+
+/**************************
+*******Html de Formulario de usuario*******
+***************************/
+#sectionForm{
+  width: 90%;
+  margin: 1em;
+}
+/**************************
+*******Html de Formulario de usuario*******
+***************************/
+
+/**************************
+*******Html de Perfil de usuario*******
+***************************/
+.perfil-usuario{
+  margin-left: 2em;
+  font-weight: bold;
+}
+.space-lines{
+  margin-top: 1em;
+}
 /**************************
 *******Html de Formulario de usuario*******
 ***************************/

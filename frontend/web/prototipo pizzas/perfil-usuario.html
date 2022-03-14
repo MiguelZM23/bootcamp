@@ -28,25 +28,44 @@
         
     </header>
     <section>
-        <article>
+        <article class="">
             <div id="sectionForm" class="card-title">
-                <h2>Formulario de alta de usuario</h2>
+                <h2>Perfil de usuario</h2>
             </div>
-            <form class="flex-col" action="POST">
-                <label for="nombre">Nombre:</label>
-                <input title="nombre" id="nombre" name="nombre" type="text">
-                <label for="apellidos">Apellidos:</label>
-                <input title="apellidos" id="apellidos" name="apellidos" type="text">
-                <label for="email">Email:</label>
-                <input title="email" id="email" name="email" type="email">
-                <label for="telefono">Telefono</label>
-                <input title="telefono" id="telefono" name="telefono" type="tel">
-                <label for="fecha_nacimiento" id="fecha_nacimiento" name="fecha_nacimiento">Fecha de nacimiento</label>
-                <input title="fecha_nacimiento" type="date">  
-            </form>
-            <button class="button"> Enviar </button>
-            <button class="button"> Cancelar </button>
+            <div class="card-title perfil-usuario">
+                <h2>¡Hola Pepe!</h2>
+            </div>
             
+            <div class="perfil-usuario space-lines">
+                <div class="flex-display">
+                    <p>Nombre:</p>
+                    <p>Pepe</p>
+                </div>
+                <div class="flex-display space-lines">
+                    <p>Apellidos:</p>
+                    <p>López González</p>
+                </div>
+                <div class="flex-display space-lines">
+                    <p>Email:</p>
+                    <p>pepe@pepe.com</p>
+                </div>
+                <div class="flex-display space-lines">
+                    <p>password:</p>
+                    <p>*********</p>
+                </div>
+                <div class="flex-display space-lines">
+                    <p>Teléfono:</p>
+                    <p>123456789</p>
+                </div>
+                <div class="flex-display space-lines">
+                    <p>Fecha nacimiento:</p> 
+                    <p>01/01/2000</p>
+                </div>
+                
+            </div>
+                  
+            
+            <button class="button"> Editar perfil </button>
     </article>
 </section>       
 
