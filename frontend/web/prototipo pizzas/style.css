@@ -235,6 +235,50 @@ h2{
     width: auto;
 }
 
+/**
+* Section Chefs
+**/
+
+#equipo{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.chef{
+  flex-grow: 1;
+  overflow: hidden;
+  position: relative;
+  transition: all 0.5s;
+}
+.chef-img{
+  height: 100%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  filter: grayscale(80%);
+}
+.chef:hover{
+  flex-grow: 3;
+}
+.chef:hover .chef-img{
+  filter: grayscale(0%);
+}
+.chef-info{
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  text-align: center;
+  opacity: 0;
+  transition: all 0.1s;
+}
+.chef:hover .chef-info{
+  opacity: 1;
+  bottom: 60px;
+  transition-delay: 0.3s;
+}
+
+
 footer{
 
     background-color: var(--color-medium-dark);
@@ -392,6 +436,50 @@ label{
   height: 2.9em;
   background-color: rgba(255, 71, 71, 0.8);
 }
+
+#equipo{
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+}
+
+.chef{
+  flex-grow: 1;
+  overflow: hidden;
+  position: relative;
+  transition: all 0.5s;
+}
+.chef-img{
+  height: 100%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  filter: grayscale(80%);
+}
+.chef:hover{
+  flex-grow: 3;
+}
+.chef:hover .chef-img{
+  filter: grayscale(0%);
+}
+.chef-info{
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  text-align: center;
+  opacity: 0;
+  transition: all 0.1s;
+}
+.chef:hover .chef-info{
+  opacity: 1;
+  bottom: 60px;
+  transition-delay: 0.3s;
+}
+
+
+
+
+
 
 #container-footer{
   display: flex;
