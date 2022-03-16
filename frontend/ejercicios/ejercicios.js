@@ -150,6 +150,38 @@ class JuegoDelNumero1 {
 
     getNombre(){return "Mi nombre es " + this.nombre}
 
+    jugar(){
+        let intentos;
+        let integer;
+        let numeroIntroducido;
+        let numeroBuscado;
+        let encontrado;
+        do {
+            try {
+                intentos += 1;
+                this.numeroIntroducido = prompt("Dame tu número del 1 al 100 (" + this.intentos + " de 10): ");
+    //				System.out.print("[" + numeroBuscado + "]: ");
+                //this.numeroIntroducido = Integer.parseInt(teclado.nextLine());
+                if (this.numeroBuscado == this.numeroIntroducido) {
+                    encontrado = true;
+                } else if (this.numeroBuscado > this.numeroIntroducido) {
+                    console.log("Mi número es mayor.");
+                } else {
+                    console.log("Mi número es menor.");
+                }
+    
+            } catch (error) {
+                console.error(error);
+            }
+        } while (this.intentos < 10 && !this.encontrado);
+        if (this.encontrado) {
+            console.log("Bieeen!!! Acertaste.");
+        } else {
+            console.log("Upsss! Se acabaron los intentos, el número era el " + numeroBuscado);
+        }
+    
+    }
+    
 }
 
 
