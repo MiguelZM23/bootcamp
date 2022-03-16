@@ -130,6 +130,7 @@ function esPalindromo(cadena){
     this.intentos = 0;
     this.encontrado = false;
     this.resultado = "Pendiente de empezar";
+    this.getNombre= function() {return "Mi nombre es " + this.nombre};
     console.log("Inicializado");   
 }
 

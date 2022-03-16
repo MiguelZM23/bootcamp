@@ -1,0 +1,18 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+#calculadora{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    border: 1px solid black;
+    border-style: double;
+}
+
+td{
+    height: 3em;
+    width: 3em;
+    border: 1px solid black;
+}
