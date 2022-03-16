@@ -117,3 +117,40 @@ function esPalindromo(cadena){
     const strReversed = cadena.split("").reverse().join("");
     return strReversed === cadena ? "es palindromo" : "no es palindromo";
     }
+
+
+/********
+ * Función constructora adivina el número
+ ********/
+
+ function JuegoDelNumero(id, nombre) {
+    this.id = id;
+    this.nombre = nombre;
+    this.numeroBuscado = (Math.floor(Math.random() * (100 - 1)) + 1);
+    this.intentos = 0;
+    this.encontrado = false;
+    this.resultado = "Pendiente de empezar";
+    console.log("Inicializado");   
+}
+
+/********
+ * Clase del juego Adivina el número
+ ********/
+class JuegoDelNumero1 {
+    constructor(id,nombre){
+        this.nombre = nombre;
+        this.id = id;
+        this.numeroBuscado = (Math.floor(Math.random() * (100 - 1)) + 1);
+        this.intentos = 0;
+        this.encontrado = false;
+        this.resultado = "Pendiente de empezar";
+        console.log("Inicializado");   
+    }
+
+    getNombre(){return "Mi nombre es " + this.nombre}
+
+}
+
+
+
+
