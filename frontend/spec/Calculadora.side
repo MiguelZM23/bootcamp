@@ -1,0 +1,421 @@
+{
+  "id": "7af22a02-c23c-4bc5-95a2-31bc2a8f4377",
+  "version": "2.0",
+  "name": "Calculadora",
+  "url": "http://127.0.0.1:5500",
+  "tests": [{
+    "id": "e25a4ec2-dd64-407d-91bc-f4685c1565a5",
+    "name": "comprobacion-teclas-selenium",
+    "commands": [{
+      "id": "9e1138f3-5871-48fe-8f39-5ccaf7cdc46a",
+      "comment": "",
+      "command": "open",
+      "target": "/frontend/ejercicios/calculadora.html",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4a5b09b9-b79f-450d-aabf-2fac85116691",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "917x693",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ac95a7a6-513a-4e1c-8ecc-86e8a5f43499",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(2) > td:nth-child(1) > .imprimir",
+      "targets": [
+        ["css=tr:nth-child(2) > td:nth-child(1) > .imprimir", "css:finder"],
+        ["xpath=//table[@id='calculadora']/tbody/tr[2]/td/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'1')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "ff84c666-59ec-4bc6-ba46-83729911dc50",
+      "comment": "",
+      "command": "verifyText",
+      "target": "id=pantalla",
+      "targets": [
+        ["id=pantalla", "id"],
+        ["css=#pantalla", "css:finder"],
+        ["xpath=//p[@id='pantalla']", "xpath:attributes"],
+        ["xpath=//div[@id='contenedor-pantalla']/p", "xpath:idRelative"],
+        ["xpath=//p", "xpath:position"],
+        ["xpath=//p[contains(.,'1')]", "xpath:innerText"]
+      ],
+      "value": "1"
+    }, {
+      "id": "81eb0f9e-573e-4d8f-a49e-8472186d27ff",
+      "comment": "",
+      "command": "click",
+      "target": "id=limpiar",
+      "targets": [
+        ["id=limpiar", "id"],
+        ["css=#limpiar", "css:finder"],
+        ["xpath=//button[@id='limpiar']", "xpath:attributes"],
+        ["xpath=//table[@id='calculadora']/tbody/tr[6]/td/button", "xpath:idRelative"],
+        ["xpath=//tr[6]/td/button", "xpath:position"],
+        ["xpath=//button[contains(.,'AC')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "96529afc-f1ca-4618-8607-4b9a8554b557",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(2) > td:nth-child(2) > .imprimir",
+      "targets": [
+        ["css=tr:nth-child(2) > td:nth-child(2) > .imprimir", "css:finder"],
+        ["xpath=//table[@id='calculadora']/tbody/tr[2]/td[2]/button", "xpath:idRelative"],
+        ["xpath=//td[2]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'2')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "86e99c9b-7a5b-4514-b5a3-b28e6cbb0b7d",
+      "comment": "",
+      "command": "verifyText",
+      "target": "id=pantalla",
+      "targets": [
+        ["id=pantalla", "id"],
+        ["css=#pantalla", "css:finder"],
+        ["xpath=//p[@id='pantalla']", "xpath:attributes"],
+        ["xpath=//div[@id='contenedor-pantalla']/p", "xpath:idRelative"],
+        ["xpath=//p", "xpath:position"],
+        ["xpath=//p[contains(.,'2')]", "xpath:innerText"]
+      ],
+      "value": "2"
+    }, {
+      "id": "3447e85f-cbbe-408e-8a61-7e81da16f1bc",
+      "comment": "",
+      "command": "click",
+      "target": "id=limpiar",
+      "targets": [
+        ["id=limpiar", "id"],
+        ["css=#limpiar", "css:finder"],
+        ["xpath=//button[@id='limpiar']", "xpath:attributes"],
+        ["xpath=//table[@id='calculadora']/tbody/tr[6]/td/button", "xpath:idRelative"],
+        ["xpath=//tr[6]/td/button", "xpath:position"],
+        ["xpath=//button[contains(.,'AC')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "9a5e5e58-edfd-4047-b3e4-1a7d000ef394",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(2) > td:nth-child(3) > .imprimir",
+      "targets": [
+        ["css=tr:nth-child(2) > td:nth-child(3) > .imprimir", "css:finder"],
+        ["xpath=//table[@id='calculadora']/tbody/tr[2]/td[3]/button", "xpath:idRelative"],
+        ["xpath=//td[3]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'3')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "4439a2c7-0b0b-47f6-9cb1-7243b9ef39ff",
+      "comment": "",
+      "command": "verifyText",
+      "target": "id=pantalla",
+      "targets": [
+        ["id=pantalla", "id"],
+        ["css=#pantalla", "css:finder"],
+        ["xpath=//p[@id='pantalla']", "xpath:attributes"],
+        ["xpath=//div[@id='contenedor-pantalla']/p", "xpath:idRelative"],
+        ["xpath=//p", "xpath:position"],
+        ["xpath=//p[contains(.,'3')]", "xpath:innerText"]
+      ],
+      "value": "3"
+    }, {
+      "id": "08a2b211-0a09-4014-ab9b-f7a4a5eac438",
+      "comment": "",
+      "command": "click",
+      "target": "id=limpiar",
+      "targets": [
+        ["id=limpiar", "id"],
+        ["css=#limpiar", "css:finder"],
+        ["xpath=//button[@id='limpiar']", "xpath:attributes"],
+        ["xpath=//table[@id='calculadora']/tbody/tr[6]/td/button", "xpath:idRelative"],
+        ["xpath=//tr[6]/td/button", "xpath:position"],
+        ["xpath=//button[contains(.,'AC')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "20533b65-7c5f-4458-9035-131b583458e9",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(3) > td:nth-child(1) > .imprimir",
+      "targets": [
+        ["css=tr:nth-child(3) > td:nth-child(1) > .imprimir", "css:finder"],
+        ["xpath=//table[@id='calculadora']/tbody/tr[3]/td/button", "xpath:idRelative"],
+        ["xpath=//tr[3]/td/button", "xpath:position"],
+        ["xpath=//button[contains(.,'4')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "5f2a8001-7044-4e9e-82a6-92efdb75d155",
+      "comment": "",
+      "command": "verifyText",
+      "target": "id=pantalla",
+      "targets": [
+        ["id=pantalla", "id"],
+        ["css=#pantalla", "css:finder"],
+        ["xpath=//p[@id='pantalla']", "xpath:attributes"],
+        ["xpath=//div[@id='contenedor-pantalla']/p", "xpath:idRelative"],
+        ["xpath=//p", "xpath:position"],
+        ["xpath=//p[contains(.,'4')]", "xpath:innerText"]
+      ],
+      "value": "4"
+    }, {
+      "id": "95484267-5010-476d-b679-02fa59b9c59e",
+      "comment": "",
+      "command": "click",
+      "target": "id=limpiar",
+      "targets": [
+        ["id=limpiar", "id"],
+        ["css=#limpiar", "css:finder"],
+        ["xpath=//button[@id='limpiar']", "xpath:attributes"],
+        ["xpath=//table[@id='calculadora']/tbody/tr[6]/td/button", "xpath:idRelative"],
+        ["xpath=//tr[6]/td/button", "xpath:position"],
+        ["xpath=//button[contains(.,'AC')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f4800a88-7c07-47b7-8247-26f733c21e27",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(3) > td:nth-child(2) > .imprimir",
+      "targets": [
+        ["css=tr:nth-child(3) > td:nth-child(2) > .imprimir", "css:finder"],
+        ["xpath=//table[@id='calculadora']/tbody/tr[3]/td[2]/button", "xpath:idRelative"],
+        ["xpath=//tr[3]/td[2]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'5')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "ff343026-136c-4584-8074-d9c3d34a991c",
+      "comment": "",
+      "command": "verifyText",
+      "target": "id=pantalla",
+      "targets": [
+        ["id=pantalla", "id"],
+        ["css=#pantalla", "css:finder"],
+        ["xpath=//p[@id='pantalla']", "xpath:attributes"],
+        ["xpath=//div[@id='contenedor-pantalla']/p", "xpath:idRelative"],
+        ["xpath=//p", "xpath:position"],
+        ["xpath=//p[contains(.,'5')]", "xpath:innerText"]
+      ],
+      "value": "5"
+    }, {
+      "id": "51a3434f-bb4d-4b82-a316-388a3d87aec4",
+      "comment": "",
+      "command": "click",
+      "target": "id=limpiar",
+      "targets": [
+        ["id=limpiar", "id"],
+        ["css=#limpiar", "css:finder"],
+        ["xpath=//button[@id='limpiar']", "xpath:attributes"],
+        ["xpath=//table[@id='calculadora']/tbody/tr[6]/td/button", "xpath:idRelative"],
+        ["xpath=//tr[6]/td/button", "xpath:position"],
+        ["xpath=//button[contains(.,'AC')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "42a763e2-fcd3-4f5a-9621-3befba90dceb",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(3) > td:nth-child(3) > .imprimir",
+      "targets": [
+        ["css=tr:nth-child(3) > td:nth-child(3) > .imprimir", "css:finder"],
+        ["xpath=//table[@id='calculadora']/tbody/tr[3]/td[3]/button", "xpath:idRelative"],
+        ["xpath=//tr[3]/td[3]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'6')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "8bdb249a-5818-4361-a289-a5adafa805f8",
+      "comment": "",
+      "command": "verifyText",
+      "target": "id=pantalla",
+      "targets": [
+        ["id=pantalla", "id"],
+        ["css=#pantalla", "css:finder"],
+        ["xpath=//p[@id='pantalla']", "xpath:attributes"],
+        ["xpath=//div[@id='contenedor-pantalla']/p", "xpath:idRelative"],
+        ["xpath=//p", "xpath:position"],
+        ["xpath=//p[contains(.,'6')]", "xpath:innerText"]
+      ],
+      "value": "6"
+    }, {
+      "id": "27fd0fd7-0e1e-465d-944c-3bf72c0e53b4",
+      "comment": "",
+      "command": "click",
+      "target": "id=limpiar",
+      "targets": [
+        ["id=limpiar", "id"],
+        ["css=#limpiar", "css:finder"],
+        ["xpath=//button[@id='limpiar']", "xpath:attributes"],
+        ["xpath=//table[@id='calculadora']/tbody/tr[6]/td/button", "xpath:idRelative"],
+        ["xpath=//tr[6]/td/button", "xpath:position"],
+        ["xpath=//button[contains(.,'AC')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "0a3cb752-8130-417f-8486-c0ac6060f933",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(4) > td:nth-child(1) > .imprimir",
+      "targets": [
+        ["css=tr:nth-child(4) > td:nth-child(1) > .imprimir", "css:finder"],
+        ["xpath=//table[@id='calculadora']/tbody/tr[4]/td/button", "xpath:idRelative"],
+        ["xpath=//tr[4]/td/button", "xpath:position"],
+        ["xpath=//button[contains(.,'7')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "31a4dfbc-4f2b-401c-924e-ba72c5634cf8",
+      "comment": "",
+      "command": "verifyText",
+      "target": "id=pantalla",
+      "targets": [
+        ["id=pantalla", "id"],
+        ["css=#pantalla", "css:finder"],
+        ["xpath=//p[@id='pantalla']", "xpath:attributes"],
+        ["xpath=//div[@id='contenedor-pantalla']/p", "xpath:idRelative"],
+        ["xpath=//p", "xpath:position"],
+        ["xpath=//p[contains(.,'7')]", "xpath:innerText"]
+      ],
+      "value": "7"
+    }, {
+      "id": "59e44742-1cf7-4099-b9b8-e51b9d362f09",
+      "comment": "",
+      "command": "click",
+      "target": "id=limpiar",
+      "targets": [
+        ["id=limpiar", "id"],
+        ["css=#limpiar", "css:finder"],
+        ["xpath=//button[@id='limpiar']", "xpath:attributes"],
+        ["xpath=//table[@id='calculadora']/tbody/tr[6]/td/button", "xpath:idRelative"],
+        ["xpath=//tr[6]/td/button", "xpath:position"],
+        ["xpath=//button[contains(.,'AC')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "951fb4b3-79ad-4943-a213-f0d2c665dc4d",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(4) > td:nth-child(2) > .imprimir",
+      "targets": [
+        ["css=tr:nth-child(4) > td:nth-child(2) > .imprimir", "css:finder"],
+        ["xpath=//table[@id='calculadora']/tbody/tr[4]/td[2]/button", "xpath:idRelative"],
+        ["xpath=//tr[4]/td[2]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'8')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f8f2d82e-b1fe-4486-84a3-d2383d9d4d18",
+      "comment": "",
+      "command": "verifyText",
+      "target": "id=pantalla",
+      "targets": [
+        ["id=pantalla", "id"],
+        ["css=#pantalla", "css:finder"],
+        ["xpath=//p[@id='pantalla']", "xpath:attributes"],
+        ["xpath=//div[@id='contenedor-pantalla']/p", "xpath:idRelative"],
+        ["xpath=//p", "xpath:position"],
+        ["xpath=//p[contains(.,'8')]", "xpath:innerText"]
+      ],
+      "value": "8"
+    }, {
+      "id": "b58f7374-ecf0-4882-af89-7f96f473e39a",
+      "comment": "",
+      "command": "click",
+      "target": "id=limpiar",
+      "targets": [
+        ["id=limpiar", "id"],
+        ["css=#limpiar", "css:finder"],
+        ["xpath=//button[@id='limpiar']", "xpath:attributes"],
+        ["xpath=//table[@id='calculadora']/tbody/tr[6]/td/button", "xpath:idRelative"],
+        ["xpath=//tr[6]/td/button", "xpath:position"],
+        ["xpath=//button[contains(.,'AC')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "1603068e-deb3-424f-9ec0-71ddb04d35e3",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(4) > td:nth-child(3) > .imprimir",
+      "targets": [
+        ["css=tr:nth-child(4) > td:nth-child(3) > .imprimir", "css:finder"],
+        ["xpath=//table[@id='calculadora']/tbody/tr[4]/td[3]/button", "xpath:idRelative"],
+        ["xpath=//tr[4]/td[3]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'9')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f75c10ad-8a8a-4d34-a74b-014efcf203b2",
+      "comment": "",
+      "command": "verifyText",
+      "target": "id=pantalla",
+      "targets": [
+        ["id=pantalla", "id"],
+        ["css=#pantalla", "css:finder"],
+        ["xpath=//p[@id='pantalla']", "xpath:attributes"],
+        ["xpath=//div[@id='contenedor-pantalla']/p", "xpath:idRelative"],
+        ["xpath=//p", "xpath:position"],
+        ["xpath=//p[contains(.,'9')]", "xpath:innerText"]
+      ],
+      "value": "9"
+    }, {
+      "id": "cc1c8bc0-0198-44ef-bca7-160daacbf9c9",
+      "comment": "",
+      "command": "click",
+      "target": "id=limpiar",
+      "targets": [
+        ["id=limpiar", "id"],
+        ["css=#limpiar", "css:finder"],
+        ["xpath=//button[@id='limpiar']", "xpath:attributes"],
+        ["xpath=//table[@id='calculadora']/tbody/tr[6]/td/button", "xpath:idRelative"],
+        ["xpath=//tr[6]/td/button", "xpath:position"],
+        ["xpath=//button[contains(.,'AC')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "4e1ea069-57ce-4269-b759-a8078eaf218b",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(5) > td:nth-child(1) > .imprimir",
+      "targets": [
+        ["css=tr:nth-child(5) > td:nth-child(1) > .imprimir", "css:finder"],
+        ["xpath=//table[@id='calculadora']/tbody/tr[5]/td/button", "xpath:idRelative"],
+        ["xpath=//tr[5]/td/button", "xpath:position"],
+        ["xpath=//button[contains(.,'0')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "ed3ee0d5-5dd5-4512-9f71-2f66239aef5a",
+      "comment": "",
+      "command": "verifyText",
+      "target": "id=pantalla",
+      "targets": [
+        ["id=pantalla", "id"],
+        ["css=#pantalla", "css:finder"],
+        ["xpath=//p[@id='pantalla']", "xpath:attributes"],
+        ["xpath=//div[@id='contenedor-pantalla']/p", "xpath:idRelative"],
+        ["xpath=//p", "xpath:position"],
+        ["xpath=//p[contains(.,'0')]", "xpath:innerText"]
+      ],
+      "value": "0"
+    }]
+  }],
+  "suites": [{
+    "id": "fec7b55b-cf09-481b-93a9-ea08e61979f6",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["e25a4ec2-dd64-407d-91bc-f4685c1565a5"]
+  }],
+  "urls": ["http://127.0.0.1:5500/"],
+  "plugins": []
+}

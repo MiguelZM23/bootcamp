@@ -26,10 +26,6 @@ describe('Pruebas de la calculadora', () => {
         })
     });
 
-
-
-
-
     describe('Probar Calculadora suma', () => {
         describe('Sumar OK', () => {
 

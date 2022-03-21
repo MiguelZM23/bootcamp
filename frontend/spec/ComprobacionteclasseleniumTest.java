@@ -22,7 +22,7 @@ import org.openqa.selenium.Keys;
 import java.util.*;
 import java.net.MalformedURLException;
 import java.net.URL;
-public class ComprobarfuncionamientoteclasTest {
+public class ComprobacionteclasseleniumTest {
   private WebDriver driver;
   private Map<String, Object> vars;
   JavascriptExecutor js;
@@ -37,24 +37,37 @@ public class ComprobarfuncionamientoteclasTest {
     driver.quit();
   }
   @Test
-  public void comprobarfuncionamientoteclas() {
-    driver.get("http://127.0.0.1:5500/ejercicios/calculadora.html");
-    driver.manage().window().setSize(new Dimension(974, 1040));
+  public void comprobacionteclasselenium() {
+    driver.get("http://127.0.0.1:5500/frontend/ejercicios/calculadora.html");
+    driver.manage().window().setSize(new Dimension(917, 693));
     driver.findElement(By.cssSelector("tr:nth-child(2) > td:nth-child(1) > .imprimir")).click();
-    driver.findElement(By.cssSelector("tr:nth-child(2) > td:nth-child(2) > .imprimir")).click();
-    driver.findElement(By.cssSelector("tr:nth-child(2) > td:nth-child(3) > .imprimir")).click();
-    driver.findElement(By.cssSelector("tr:nth-child(3) > td:nth-child(1) > .imprimir")).click();
-    driver.findElement(By.cssSelector("tr:nth-child(3) > td:nth-child(2) > .imprimir")).click();
-    driver.findElement(By.cssSelector("tr:nth-child(3) > td:nth-child(3) > .imprimir")).click();
-    driver.findElement(By.cssSelector("tr:nth-child(4) > td:nth-child(1) > .imprimir")).click();
-    driver.findElement(By.cssSelector("tr:nth-child(4) > td:nth-child(2) > .imprimir")).click();
-    driver.findElement(By.cssSelector("tr:nth-child(4) > td:nth-child(3) > .imprimir")).click();
-    driver.findElement(By.cssSelector("tr:nth-child(5) > td:nth-child(1) > .imprimir")).click();
-    driver.findElement(By.cssSelector("tr:nth-child(2) > td:nth-child(4) > .imprimir")).click();
-    driver.findElement(By.cssSelector("tr:nth-child(3) > td:nth-child(4) > .imprimir")).click();
-    driver.findElement(By.cssSelector("tr:nth-child(4) > td:nth-child(4) > .imprimir")).click();
-    driver.findElement(By.cssSelector("tr:nth-child(5) > td:nth-child(2) > .imprimir")).click();
-    driver.findElement(By.cssSelector("tr:nth-child(6) .imprimir")).click();
+    assertThat(driver.findElement(By.id("pantalla")).getText(), is("1"));
     driver.findElement(By.id("limpiar")).click();
+    driver.findElement(By.cssSelector("tr:nth-child(2) > td:nth-child(2) > .imprimir")).click();
+    assertThat(driver.findElement(By.id("pantalla")).getText(), is("2"));
+    driver.findElement(By.id("limpiar")).click();
+    driver.findElement(By.cssSelector("tr:nth-child(2) > td:nth-child(3) > .imprimir")).click();
+    assertThat(driver.findElement(By.id("pantalla")).getText(), is("3"));
+    driver.findElement(By.id("limpiar")).click();
+    driver.findElement(By.cssSelector("tr:nth-child(3) > td:nth-child(1) > .imprimir")).click();
+    assertThat(driver.findElement(By.id("pantalla")).getText(), is("4"));
+    driver.findElement(By.id("limpiar")).click();
+    driver.findElement(By.cssSelector("tr:nth-child(3) > td:nth-child(2) > .imprimir")).click();
+    assertThat(driver.findElement(By.id("pantalla")).getText(), is("5"));
+    driver.findElement(By.id("limpiar")).click();
+    driver.findElement(By.cssSelector("tr:nth-child(3) > td:nth-child(3) > .imprimir")).click();
+    assertThat(driver.findElement(By.id("pantalla")).getText(), is("6"));
+    driver.findElement(By.id("limpiar")).click();
+    driver.findElement(By.cssSelector("tr:nth-child(4) > td:nth-child(1) > .imprimir")).click();
+    assertThat(driver.findElement(By.id("pantalla")).getText(), is("7"));
+    driver.findElement(By.id("limpiar")).click();
+    driver.findElement(By.cssSelector("tr:nth-child(4) > td:nth-child(2) > .imprimir")).click();
+    assertThat(driver.findElement(By.id("pantalla")).getText(), is("8"));
+    driver.findElement(By.id("limpiar")).click();
+    driver.findElement(By.cssSelector("tr:nth-child(4) > td:nth-child(3) > .imprimir")).click();
+    assertThat(driver.findElement(By.id("pantalla")).getText(), is("9"));
+    driver.findElement(By.id("limpiar")).click();
+    driver.findElement(By.cssSelector("tr:nth-child(5) > td:nth-child(1) > .imprimir")).click();
+    assertThat(driver.findElement(By.id("pantalla")).getText(), is("0"));
   }
 }
