@@ -2,7 +2,7 @@ console.log("*****Practicando JavaScript*****");
 
 function numAleatorio(a, b) {
     let c = Math.random(a, b);
-    return a + b;
+    return c;
 }
 function ejercicio0(max, min) {
     //let min = parseFloat(prompt("Introduce el intervalo inferior"));
@@ -91,11 +91,11 @@ function esNif(nif){
         numero = numero.replace('X', 0);
         numero = numero.replace('Y', 1);
         numero = numero.replace('Z', 2);
-        let = nif.substr(nif.length-1, 1);
+        let l= nif.substr(nif.length-1, 1);
         numero = numero % 23;
         letra = 'TRWAGMYFPDXBNJZSQVHLCKET';
         letra = letra.substring(numero, numero+1);
-        if (letra != let) {
+        if (letra != l) {
             //alert('Dni erroneo, la letra del NIF no se corresponde');
             return false;
         }else{

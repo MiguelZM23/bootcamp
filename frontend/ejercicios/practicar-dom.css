@@ -1,0 +1,23 @@
+*{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+
+#titulo-principal{
+    color:black;
+    
+}
+
+.boton{
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    height: 2em;
+    width: auto;
+}
+#boton-hola{
+    font-weight: bolder;
+}
+#boton-titulo{
+    font-weight: bolder;
+}
