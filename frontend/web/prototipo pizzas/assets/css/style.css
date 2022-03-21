@@ -1,0 +1,58 @@
+
+body{
+    font-family: 'Raleway', sans-serif !important;
+}
+
+nav{
+    align-items: center;
+    background-color: #7E0306 !important;
+}
+
+article{
+    margin-top: 1%;
+}
+
+.carrusel{
+    width: 100%;
+}
+
+.acceso{    
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center; 
+}
+
+.btn-acceso{
+    width: 100%;
+}
+
+.card{
+    flex-direction: row !important;
+<<<<<<< Upstream, based on origin/main
+=======
+<<<<<<< HEAD
+    flex-wrap: nowrap !important;
+>>>>>>> e1ee3e0 merge
+}
+.card img{
+    width: 100% !important;
+}
+<<<<<<< Upstream, based on origin/main
+=======
+
+=======
+}
+.card img{
+    width: 100% !important;
+}
+>>>>>>> branch 'main' of https://github.com/anfernan3/Pizzeria.git
+>>>>>>> e1ee3e0 merge
+.carta{
+    width: 100%;
+}
+
+.btn{
+    background-color: #D53E0F !important;
+}
+
