@@ -1,0 +1,65 @@
+get http://localhost:8091/login?name=kk&password=kk
+
+###
+
+post http://localhost:8091/login?name=kk&password=kk
+Content-Type: application/json
+
+{
+    "name": "admin",
+    "password": "kk"
+}
+
+###
+
+post http://localhost:8091/login?name=kk&password=kk
+Content-Type: application/json
+
+{
+    "name": "falla",
+    "password": "kk"
+}
+
+###
+
+post http://localhost:8091/auth/login
+Content-Type: application/json
+
+{
+    "name": "admin",
+    "password": "admin1"
+}
+
+###
+
+get http://localhost:8091/seguro
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJNaWNyb3NlcnZpY2lvc0pXVCIsInN1YiI6ImtrIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTY0ODA4MDk5NywiZXhwIjoxNjQ4MDgxNTk3fQ.gBipUBQxWw8_C7isni7Ltq8GlLPKH93NpN9FdIKOjOKINpMT0cYyqAK_e_VCTi2I9rFUQVfO3k6oZvbmvL79aA
+###
+
+get http://localhost:8091/admin
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJNaWNyb3NlcnZpY2lvc0pXVCIsInN1YiI6ImFkbWluIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIiwiUk9MRV9BRE1JTiJdLCJpYXQiOjE2NDY2NjM2NjMsImV4cCI6MTY0NjY2NDI2M30.PKwUx8Dg0srR5HnPT7cbKF0iSXvVllOMkZBRxIZxjbTYDf6kcOv77MTiGDm2BUKUtBubHosIU2JgmRLwujRe2A
+
+###
+
+get http://localhost:8091/secreto
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJNaWNyb3NlcnZpY2lvc0pXVCIsInN1YiI6ImFkbWluIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIiwiUk9MRV9BRE1JTiJdLCJpYXQiOjE2NDY2NjM2NjMsImV4cCI6MTY0NjY2NDI2M30.PKwUx8Dg0srR5HnPT7cbKF0iSXvVllOMkZBRxIZxjbTYDf6kcOv77MTiGDm2BUKUtBubHosIU2JgmRLwujRe2A
+
+###
+
+get http://localhost:8091/pass?pass=kk
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJNaWNyb3NlcnZpY2lvc0pXVCIsInN1YiI6ImFkbWluIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIiwiUk9MRV9BRE1JTiJdLCJpYXQiOjE2NDc2MTA5MzAsImV4cCI6MTY0NzYxMTUzMH0.MSkWpXxKZ9vQdlu156cY-E0Xuz0lIikRWGQcYOZReWefE2j8URoWuoCkq4j1pY5QYlM4mqDSdzQRq1Wi3zf5-g
+
+###
+
+get http://localhost:8091/val?pass=kk&cmp=$2a$10$IVhCbJY7yNojYzG0h8M1tOg3TzP7eh/BACOaG08Habp4zjeUb0XqC
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJNaWNyb3NlcnZpY2lvc0pXVCIsInN1YiI6ImFkbWluIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIiwiUk9MRV9BRE1JTiJdLCJpYXQiOjE2NDc2MTA5MzAsImV4cCI6MTY0NzYxMTUzMH0.MSkWpXxKZ9vQdlu156cY-E0Xuz0lIikRWGQcYOZReWefE2j8URoWuoCkq4j1pY5QYlM4mqDSdzQRq1Wi3zf5-g
+
+
+###
+get http://localhost:8001/demos/auth/seguro
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJNaWNyb3NlcnZpY2lvc0pXVCIsInN1YiI6ImFkbWluIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIiwiUk9MRV9BRE1JTiJdLCJpYXQiOjE2NDc2MTA0NTcsImV4cCI6MTY0NzYxMTA1N30.O60dSx0XLjWQG2TWmEzeguJJP8gyQNRS8fHNDpgyCjXmEK6OBYjape50YbbXfO0N3pQ_rPKyrLspdtePy7oGAA
+
+
+###
+get http://localhost:8001/demos/auth/secreto
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJNaWNyb3NlcnZpY2lvc0pXVCIsInN1YiI6ImtrIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTY0NzU0MTAwMCwiZXhwIjoxNjQ3NTQxNjAwfQ.T2BCJcwg9V8QTYfA-Caeas4Cc1KxaDbBb8mH8RI5W9ySNPsXqX4YcxK7uC3NWP_pW4GwFSJncZX-X5gUGVDawg

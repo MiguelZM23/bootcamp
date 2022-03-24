@@ -16,12 +16,12 @@ class Calculadora {
         return miArray;
     }
     sonido() {
-        let audio = new Audio('click.mp3');
-        audio.play();
+        //let audio = new Audio('click.mp3');
+        //audio.play();
     }
 
     imprimir(value) {
-
+        
         this.sonido();
         if (typeof (value) === String && value.charAt(0) === '.') this.pantalla.textContent += ',';
         else this.pantalla.textContent += value;

@@ -10,7 +10,9 @@
 </head>
 
 <body>
+  <audio src="click.mp3"></audio>
   <table id="calculadora">
+
     <tr>
       <td id="celda-pantalla" colspan="4">
         <div id="contenedor-pantalla">
@@ -48,15 +50,16 @@
     </tr>
   </table>
 
-  <script src="calculadora.js"></script>
+  <script type="text/javascript" src="calculadora.js"></script>
   <script>
-
+   
     let calculadora = new Calculadora(1, "calculadora", document.querySelector("#pantalla"));
     console.log(calculadora.getNombre());
     console.log(calculadora);
-
+    let sonido = document.querySelector('audio');
     document.querySelector("#limpiar").addEventListener('click', ev => calculadora.limpiar());
     document.querySelectorAll(".imprimir").forEach(btn => btn.addEventListener('click', ev => calculadora.imprimir(ev.target.textContent)));
+    document.querySelectorAll("button").forEach(btn => btn.addEventListener('click', ev => sonido.play()));
     document.querySelector("#resultado").addEventListener('click', ev => calculadora.calcular(calculadora.pantalla.textContent));
 
 
