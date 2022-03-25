@@ -1,0 +1,110 @@
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-calculadora',
+  templateUrl: './calculadora.component.html',
+  styleUrls: ['./calculadora.component.css']
+})
+export class CalculadoraComponent implements OnInit {
+  input:string = '';
+  result:string = '';
+
+dameArray(i:number, j:number) {
+    let miArray = [];
+    for (let h = 0; h < i; h++) {
+        miArray[h] = j.toString();
+    }
+
+    return miArray;
+}
+sonido() {
+    //let audio = new Audio('click.mp3');
+    //audio.play();
+}
+
+limpiar() {
+  if (this.input !="" ) {
+    this.input="";
+    }
+}
+
+clickNumero(num: string) {
+
+  //No permitir . más de una vez
+  if (num==".") {
+    if (this.input !="" ) {
+
+      const lastNum=this.getLastOperand()
+      console.log(lastNum.lastIndexOf("."))
+      if (lastNum.lastIndexOf(".") >= 0) return;
+    }
+  }
+
+  //No permitir 0 al comienzo.
+  //Javascript will throw Octal literals are not allowed in strict mode.
+  if (num=="0") {
+    if (this.input=="" ) {
+      return;
+    }
+    const PrevKey = this.input[this.input.length - 1];
+    if (PrevKey === '/' || PrevKey === '*' || PrevKey === '-' || PrevKey === '+')  {
+        return;
+    }
+  }
+
+  this.input = this.input + num
+  this.calcResultado();
+}
+
+getLastOperand() {
+  let pos:number;
+  console.log(this.input)
+  pos=this.input.toString().lastIndexOf("+")
+  if (this.input.toString().lastIndexOf("-") > pos) pos=this.input.lastIndexOf("-")
+  if (this.input.toString().lastIndexOf("*") > pos) pos=this.input.lastIndexOf("*")
+  if (this.input.toString().lastIndexOf("/") > pos) pos=this.input.lastIndexOf("/")
+  console.log('Last '+this.input.substr(pos+1))
+  return this.input.substr(pos+1)
+}
+
+calcResultado() {
+  let formula = this.input;
+
+  let lastKey = formula[formula.length - 1];
+
+  if (lastKey === '.')  {
+    formula=formula.substr(0,formula.length - 1);
+  }
+
+  lastKey = formula[formula.length - 1];
+
+  if (lastKey === '/' || lastKey === '*' || lastKey === '-' || lastKey === '+' || lastKey === '.')  {
+    formula=formula.substr(0,formula.length - 1);
+  }
+
+  console.log("Formula " +formula);
+  this.result = eval(formula);
+}
+
+clickOperador(op: string) {
+
+  //No permitir más de un operador seguido
+  const lastKey = this.input[this.input.length - 1];
+  if (lastKey === '/' || lastKey === '*' || lastKey === '-' || lastKey === '+')  {
+    return;
+  }
+
+  this.input = this.input + op
+  this.calcResultado();
+}
+
+getResultado() {
+  this.calcResultado();
+  this.input = this.result;
+  if (this.input=="0") this.input="";
+}
+
+  ngOnInit(): void {
+  }
+
+}

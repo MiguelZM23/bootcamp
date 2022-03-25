@@ -1,0 +1,42 @@
+
+<audio src="click.mp3"></audio>
+
+<table id="calculadora">
+
+  <tr>
+    <td id="celda-pantalla" colspan="4">
+      <div id="contenedor-pantalla">
+        <p id="pantalla">{{input}}</p>
+      </div>
+
+    </td>
+  </tr>
+  <tr>
+    <td><button class="imprimir" (click)="clickNumero('1')">1</button> </td>
+    <td><button class="imprimir" (click)="clickNumero('2')">2</button></td>
+    <td><button class="imprimir" (click)="clickNumero('3')">3</button></td>
+    <td><button class="imprimir" (click)="clickOperador('+')">+</button></td>
+  </tr>
+  <tr>
+    <td><button class="imprimir" (click)="clickNumero('4')">4</button></td>
+    <td><button class="imprimir" (click)="clickNumero('5')">5</button></td>
+    <td><button class="imprimir" (click)="clickNumero('6')">6</button></td>
+    <td><button class="imprimir" (click)="clickOperador('-')">-</button></td>
+  </tr>
+  <tr>
+    <td><button class="imprimir" (click)="clickNumero('7')">7</button></td>
+    <td><button class="imprimir" (click)="clickNumero('8')">8</button></td>
+    <td><button class="imprimir" (click)="clickNumero('9')">9</button></td>
+    <td><button class="imprimir" (click)="clickOperador('*')">*</button></td>
+  </tr>
+  <tr>
+    <td colspan="3"><button class="imprimir" (click)="clickNumero('0')">0</button></td>
+    <td><button class="imprimir" (click)="clickOperador('/')">/</button></td>
+  </tr>
+  <tr>
+    <td colspan="2"><button (click)="limpiar()">AC</button></td>
+    <td><button class="imprimir" (click)="clickNumero('.')">.</button></td>
+    <td><button id="resultado" (click)="getResultado()">=</button></td>
+  </tr>
+</table>
+

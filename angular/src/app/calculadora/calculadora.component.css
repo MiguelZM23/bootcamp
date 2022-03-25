@@ -1,0 +1,52 @@
+*{
+  margin: 0;
+  padding: 0;
+
+}
+
+table{
+  margin: 3em;
+  border-color: white;
+  display:flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+#calculadora{
+  display: flex;
+  height: 30em;
+  align-items: center;
+  align-content: center;
+}
+
+td{
+  height: 6em;
+  width: 6em;
+  border: 1px solid black;
+}
+
+button{
+  height: 100%;
+  width: 100%;
+  color: white;
+  background-color: black;
+  font-size: xx-large;
+  font-weight: bold;
+}
+
+#contenedor-pantalla{
+  overflow: auto;
+  width: 55vw;
+}
+
+#pantalla{
+  font-size: 3em;
+  font-family:Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: white;
+  font-weight: bold;
+}
+
+#celda-pantalla{
+  background-color: grey;
+}
