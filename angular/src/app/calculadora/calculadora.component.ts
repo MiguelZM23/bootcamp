@@ -9,6 +9,11 @@ export class CalculadoraComponent implements OnInit {
   input:string = '';
   result:string = '';
 
+
+
+
+
+
 dameArray(i:number, j:number) {
     let miArray = [];
     for (let h = 0; h < i; h++) {
