@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
-import com.capgemini.CalculadoraCientifica;
+import com.bootcamp.CalculadoraCientifica;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 class JuegoAdivinaNumeroTest {
