@@ -2,8 +2,8 @@
  * 
  */
 package com.bootcamp;
-import com.capgemini.juegoAdivinaNumeroYTest.Juego;
-import com.capgemini.juegoAdivinaNumeroYTest.JuegoException;
+import com.bootcamp.juegoAdivinaNumeroYTest.Juego;
+import com.bootcamp.juegoAdivinaNumeroYTest.JuegoException;
 import com.naipes.*;
 
 import java.io.IOException;
@@ -98,7 +98,7 @@ public class Main {
 		Scanner teclado = new Scanner(System.in);
 
 		try {
-			Juego<String> juego = new com.capgemini.juegoAdivinaNumeroYTest.JuegoAdivinaNumero();
+			Juego<String> juego = new com.bootcamp.juegoAdivinaNumeroYTest.JuegoAdivinaNumero();
 			juego.inicializar();
 			for (int intentos = 1; intentos <= 10; intentos++) {
 				System.out.print("Dame tu número del 1 al 100 (" + (juego.getJugada() + 1) + " de 10): ");

@@ -1,4 +1,4 @@
-package com.capgemini.juegoAdivinaNumeroYTest;
+package com.bootcamp.juegoAdivinaNumeroYTest;
 
 import static org.junit.jupiter.api.Assertions.*;
 

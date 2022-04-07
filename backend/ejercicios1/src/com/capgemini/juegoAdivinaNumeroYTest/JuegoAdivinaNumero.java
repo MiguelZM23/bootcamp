@@ -1,4 +1,4 @@
-package com.capgemini.juegoAdivinaNumeroYTest;
+package com.bootcamp.juegoAdivinaNumeroYTest;
 
 import java.util.Random;
 

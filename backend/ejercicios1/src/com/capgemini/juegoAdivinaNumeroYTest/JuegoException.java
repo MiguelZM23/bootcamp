@@ -1,4 +1,4 @@
-package com.capgemini.juegoAdivinaNumeroYTest;
+package com.bootcamp.juegoAdivinaNumeroYTest;
 
 @SuppressWarnings("serial")
 public class JuegoException extends Exception {

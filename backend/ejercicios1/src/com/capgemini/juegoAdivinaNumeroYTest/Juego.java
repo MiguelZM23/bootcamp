@@ -1,4 +1,4 @@
-package com.capgemini.juegoAdivinaNumeroYTest;
+package com.bootcamp.juegoAdivinaNumeroYTest;
 
 public interface Juego<T> {
 	/**
